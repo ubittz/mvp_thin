@@ -72,7 +72,7 @@ const StyledLogin = styled.div`
 const StyledLoginButton = styled.button`
   outline: none;
   border: none;
-  background: ${COLORS.MAIN};
+  background: ${COLORS.MAIN_400};
   height: 48px;
   border-radius: 8px;
 `;

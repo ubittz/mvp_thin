@@ -7,8 +7,8 @@ import Register from "@@pages/Register";
 function Router() {
   return (
     <Routes>
-      <Route path="/" element={<Login />} />
-      <Route path="/register" element={<Register />} />
+      <Route path="/" element={<Register />} />
+      <Route path="/register" element={<Login />} />
       <Route path="/home" element={<Home />} />
     </Routes>
   );

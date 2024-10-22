@@ -1,3 +1,5 @@
+import { DOMAttributes } from "react";
+
 export function KakaotalkIcon() {
   return (
     <svg
@@ -81,6 +83,27 @@ export function NaverIcon() {
       <path
         d="M18 20V37H24.9643V28.4948L31.0246 37H38V20H31.0246V28.4948L24.9643 20H18Z"
         fill="white"
+      />
+    </svg>
+  );
+}
+
+export function LeftArrowIcon(props: DOMAttributes<SVGSVGElement>) {
+  return (
+    <svg
+      {...props}
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M11 5L5 12M5 12L11 19M5 12H19"
+        stroke="#0C0C0E"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
