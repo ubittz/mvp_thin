@@ -1,19 +1,14 @@
 import styled from "styled-components";
 
-import {
-  AdditionalTypographyProps,
-  TypographyProps,
-} from "@@components/Typography/type";
+import { AdditionalTypographyProps } from "@@components/Typography/type";
+import { COLORS } from "@@constants/colors";
 
-const StyledText = styled.p<AdditionalTypographyProps>`
+const Text = styled.p<AdditionalTypographyProps>`
   letter-spacing: -0.04em;
   font-size: ${({ fontSize }) => fontSize}px;
   font-weight: ${({ fontWeight }) => fontWeight};
   line-height: ${({ lineHeight }) => lineHeight}px;
+  color: ${({ color }) => color ?? COLORS.GRAY_SCALE_900};
 `;
-
-function Text(props: TypographyProps & AdditionalTypographyProps) {
-  return <StyledText {...props} />;
-}
 
 export default Text;

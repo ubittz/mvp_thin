@@ -1,5 +1,6 @@
-import { InputProps } from "@@components/Input/type";
+import { InputHTMLAttributes } from "react";
 
-export interface InputFormGroupProps extends InputProps {
+export interface InputFormGroupProps
+  extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
 }

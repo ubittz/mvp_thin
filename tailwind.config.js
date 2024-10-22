@@ -8,6 +8,7 @@ export default {
     extend: {
       colors: {
         ...defaultColors,
+        main: "#FBB037",
         grayscale000: "#FFFFFF",
         grayscale050: "#F1F2F3",
         grayscale100: "#E4E5E7",
