@@ -1,9 +1,20 @@
-import { Provider } from 'react-redux';
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 
-import { store } from '@@store';
+import GlobalStyle from "@@GlobalStyle";
+import Router from "@@router/router";
+import { store } from "@@store";
 
 function App() {
-  return <Provider store={store}></Provider>;
+  return (
+    <BrowserRouter>
+      <Provider store={store}>
+        <GlobalStyle>
+          <Router />
+        </GlobalStyle>
+      </Provider>
+    </BrowserRouter>
+  );
 }
 
 export default App;
