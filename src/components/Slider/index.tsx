@@ -8,10 +8,14 @@ import styled from 'styled-components';
 import { SliderProps } from '@@components/Slider/type';
 import { COLORS } from '@@constants/colors';
 
-const StyledSlider = styled.div<{ $currentIndex: number }>`
+const StyledSlider = styled.div<{ $currentIndex: number; $size?: number }>`
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  .slider__slick_wrap {
+    ${({ $size }) => $size && `width: ${$size}px;`}
+  }
 
   .slider__dots_wrap {
     display: flex;
@@ -42,22 +46,24 @@ const StyledSlick = styled(Slick)<{ gap: number }>`
   }
 `;
 
-function Slider({ items, gap = 0 }: SliderProps) {
+function Slider({ items, gap = 0, size }: SliderProps) {
   const [index, setIndex] = useState<number>(0);
 
   return (
-    <StyledSlider $currentIndex={index}>
-      <StyledSlick
-        gap={gap ?? 0}
-        dots={false}
-        infinite={false}
-        arrows={false}
-        beforeChange={(_, index) => {
-          setIndex(index);
-        }}
-      >
-        {items}
-      </StyledSlick>
+    <StyledSlider $currentIndex={index} $size={size}>
+      <div className='slider__slick_wrap'>
+        <StyledSlick
+          gap={gap ?? 0}
+          dots={false}
+          infinite={false}
+          arrows={false}
+          beforeChange={(_, index) => {
+            setIndex(index);
+          }}
+        >
+          {items}
+        </StyledSlick>
+      </div>
       <div className='slider__dots_wrap'>
         {items.map((_, index) => (
           <div className='slider_dot' key={index} />

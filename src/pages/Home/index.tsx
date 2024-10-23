@@ -19,6 +19,7 @@ const StyledHome = styled.div`
   .home__body {
     flex: 1;
     overflow-y: scroll;
+    overflow-x: hidden;
     .home__body_contents {
       padding: 0 16px;
       padding-top: 20px;
