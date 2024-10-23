@@ -29,7 +29,7 @@ const StyledHome = styled.div`
 function Home() {
   return (
     <StyledHome>
-      <Header hiddenBack>
+      <Header hiddenBack={true}>
         <LogoIcon />
       </Header>
       <div className='home__body'>
