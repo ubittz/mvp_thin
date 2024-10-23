@@ -1,26 +1,11 @@
-import { HomeTabs } from '@@stores/home/type';
+import { HomeTabs, Profile } from '@@stores/home/type';
 
 export interface RecentSearchCardProps {
-  profile: RecentSearchProfile;
+  profile: Profile;
 }
 
 export interface RecommendCardProps {
-  profile: RecommendProfile;
-}
-
-export interface RecentSearchProfile {
-  image: string;
-  name: string;
-  title: string;
-  region: string;
-}
-
-export interface RecommendProfile {
-  image: string;
-  name: string;
-  title: string;
-  region: string;
-  description: string;
+  profile: Profile;
 }
 
 export interface HomePanelProps {

@@ -18,6 +18,7 @@ export interface Member {
 }
 
 export interface Worker {
+  id: number;
   image: string;
   name: string;
   category: string;
@@ -26,9 +27,19 @@ export interface Worker {
 }
 
 export interface Company {
+  id: number;
   image: string;
   name: string;
   category: string;
+  region: string;
+  description: string;
+}
+
+export interface Profile {
+  id: number;
+  image: string;
+  name: string;
+  title: string;
   region: string;
   description: string;
 }

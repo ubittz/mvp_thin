@@ -25,6 +25,7 @@ function Recommend({ panelType }: HomePanelProps) {
           <RecommendCard
             key={worker.name}
             profile={{
+              id: worker.id,
               image: worker.image,
               name: worker.name,
               title: worker.category,

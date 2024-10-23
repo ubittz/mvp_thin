@@ -27,10 +27,12 @@ function RecentSearch({ panelType }: HomePanelProps) {
           <RecentSearchCard
             key={worker.name}
             profile={{
+              id: worker.id,
               image: worker.image,
               name: worker.name,
               title: worker.category,
               region: worker.region,
+              description: worker.description,
             }}
           />
         ))}
