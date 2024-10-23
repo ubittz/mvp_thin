@@ -176,3 +176,31 @@ export function GNBMyPageIcon({ isFill = false, ...props }: GNBIconProps) {
     </svg>
   );
 }
+
+export function UserIcon() {
+  return (
+    <svg width='22' height='25' viewBox='0 0 22 25' fill='none' xmlns='http://www.w3.org/2000/svg'>
+      <g clipPath='url(#clip0_42005_3986)'>
+        <path
+          d='M10.8865 11.8451C13.864 11.8451 16.2778 9.43681 16.2778 6.46601C16.2778 3.49522 13.864 1.08691 10.8865 1.08691C7.9089 1.08691 5.49512 3.49522 5.49512 6.46601C5.49512 9.43681 7.9089 11.8451 10.8865 11.8451Z'
+          fill='#E4E5E7'
+          stroke='#E4E5E7'
+          strokeLinecap='round'
+          strokeLinejoin='round'
+        />
+        <path
+          d='M3.18196 24.0434C2.09858 24.0434 1.21973 23.2494 1.21973 22.2706C1.21973 17.0031 5.56923 12.6953 10.8871 12.6953C16.2049 12.6953 20.5544 17.0062 20.5544 22.2706C20.5544 23.2494 19.6756 24.0434 18.5922 24.0434H3.18196Z'
+          fill='#E4E5E7'
+          stroke='#E4E5E7'
+          strokeLinecap='round'
+          strokeLinejoin='round'
+        />
+      </g>
+      <defs>
+        <clipPath id='clip0_42005_3986'>
+          <rect width='21.2522' height='23.9652' fill='white' transform='translate(0.260742 0.130371)' />
+        </clipPath>
+      </defs>
+    </svg>
+  );
+}

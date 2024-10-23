@@ -6,7 +6,7 @@ import { LeftArrowIcon } from '@@constants/images';
 
 const StyledHeader = styled.div<{ $hiddenBack?: boolean }>`
   display: flex;
-  justify-content: ${({ $hiddenBack }) => ($hiddenBack ? 'center' : 'space-between')};
+  justify-content: space-between;
   align-items: center;
   height: 56px;
   padding: 0 16px;
