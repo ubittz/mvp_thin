@@ -4,9 +4,9 @@ import { HeaderProps } from '@@components/Header/type';
 import { COLORS } from '@@constants/colors';
 import { LeftArrowIcon } from '@@constants/images';
 
-const StyledHeader = styled.div`
+const StyledHeader = styled.div<{ hiddenBack?: boolean }>`
   display: flex;
-  justify-content: space-between;
+  justify-content: ${({ hiddenBack }) => (hiddenBack ? 'center' : 'space-between')};
   align-items: center;
   height: 56px;
   padding: 0 16px;
@@ -16,13 +16,14 @@ const StyledHeader = styled.div`
 
   .black_space {
     width: 24px;
+    display: ${({ hiddenBack }) => (hiddenBack ? 'none' : 'block')};
   }
 `;
 
-function Header({ children, onBack }: HeaderProps) {
+function Header({ hiddenBack, onBack, children }: HeaderProps) {
   return (
-    <StyledHeader>
-      <LeftArrowIcon onClick={onBack} />
+    <StyledHeader hiddenBack={hiddenBack}>
+      {!hiddenBack && <LeftArrowIcon onClick={onBack} />}
       {children}
       <div className='black_space' />
     </StyledHeader>
