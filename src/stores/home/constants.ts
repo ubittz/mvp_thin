@@ -2,6 +2,16 @@ import WorkerImage2 from '@@stores/home/images/임나영.png';
 import WorkerImage1 from '@@stores/home/images/정은비.png';
 import { Worker } from '@@stores/home/type';
 
+export const HOME_TABS = {
+  FIND_WORKER: 'findWorker',
+  FIND_COMPANY: 'findCompany',
+} as const;
+
+export const KEYWORD_BY_HOME_TABS = {
+  [HOME_TABS.FIND_WORKER]: '워커',
+  [HOME_TABS.FIND_COMPANY]: '기업',
+} as const;
+
 export const MEMBER_DATA = [
   {
     name: '김영희',

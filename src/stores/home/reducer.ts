@@ -1,19 +1,24 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { WORKER_DATA } from '@@stores/home/constants';
-import { HomeState } from '@@stores/home/type';
+import { HOME_TABS, WORKER_DATA } from '@@stores/home/constants';
+import { HomeState, HomeTabs } from '@@stores/home/type';
 
 const initialState: HomeState = {
   workerList: WORKER_DATA,
   companyList: [],
+  selectedTab: HOME_TABS.FIND_WORKER,
 };
 
 const homeSlice = createSlice({
   name: 'home',
   initialState,
-  reducers: {},
+  reducers: {
+    setSelectedTab(state, { payload }: PayloadAction<HomeTabs>) {
+      state.selectedTab = payload;
+    },
+  },
 });
 
-export const {} = homeSlice.actions;
+export const { setSelectedTab } = homeSlice.actions;
 
 export default homeSlice.reducer;

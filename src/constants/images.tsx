@@ -1,5 +1,11 @@
 import { SVGAttributes } from 'react';
 
+import { COLORS } from '@@constants/colors';
+
+interface GNBIconProps extends SVGAttributes<SVGSVGElement> {
+  isFill?: boolean;
+}
+
 export function KakaotalkIcon() {
   return (
     <svg width='56' height='56' viewBox='0 0 56 56' fill='none' xmlns='http://www.w3.org/2000/svg'>
@@ -99,6 +105,74 @@ export function SearchIcon(props: SVGAttributes<SVGSVGElement>) {
         strokeLinejoin='round'
       />
       <path d='M20 20L16 16' stroke='#93979F' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round' />
+    </svg>
+  );
+}
+
+const gnbColorGenerator = (fill: boolean) => (fill ? COLORS.MAIN_400 : COLORS.GRAY_SCALE_200);
+
+export function GNBHomeIcon({ isFill = false, ...props }: GNBIconProps) {
+  return (
+    <svg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg' {...props}>
+      {isFill && <ellipse cx='21.3333' cy='9.33333' rx='5.33333' ry='5.33333' fill='#FAF5D6' />}
+      <path
+        d='M5.33203 12L15.9987 4L26.6654 12V26.6667H5.33203V12Z'
+        stroke={gnbColorGenerator(isFill)}
+        strokeWidth='1.5'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+      />
+      <path d='M12 21.334H20' stroke={gnbColorGenerator(isFill)} strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round' />
+    </svg>
+  );
+}
+
+export function GNBSearchIcon({ isFill = false, ...props }: GNBIconProps) {
+  return (
+    <svg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg' {...props}>
+      <path
+        d='M14.6654 24.0007C19.82 24.0007 23.9987 19.822 23.9987 14.6673C23.9987 9.51266 19.82 5.33398 14.6654 5.33398C9.51071 5.33398 5.33203 9.51266 5.33203 14.6673C5.33203 19.822 9.51071 24.0007 14.6654 24.0007Z'
+        stroke={gnbColorGenerator(isFill)}
+        strokeWidth='1.5'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+      />
+      <path d='M26.6654 26.6673L21.332 21.334' stroke={gnbColorGenerator(isFill)} strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round' />
+    </svg>
+  );
+}
+
+export function GNBMessageIcon({ isFill = false, ...props }: GNBIconProps) {
+  return (
+    <svg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg' {...props}>
+      <path
+        d='M28 15.3334C28.0046 17.0932 27.5934 18.8292 26.8 20.4C25.8592 22.2824 24.413 23.8656 22.6233 24.9724C20.8335 26.0792 18.771 26.6659 16.6667 26.6667C14.9068 26.6713 13.1708 26.2601 11.6 25.4667L4 28L6.53333 20.4C5.73991 18.8292 5.32875 17.0932 5.33333 15.3334C5.33415 13.229 5.92082 11.1665 7.02763 9.37677C8.13444 7.58704 9.71767 6.14079 11.6 5.20004C13.1708 4.40661 14.9068 3.99545 16.6667 4.00004H17.3333C20.1125 4.15336 22.7374 5.32639 24.7055 7.29452C26.6737 9.26265 27.8467 11.8876 28 14.6667V15.3334Z'
+        stroke={gnbColorGenerator(isFill)}
+        strokeWidth='1.5'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+      />
+    </svg>
+  );
+}
+
+export function GNBMyPageIcon({ isFill = false, ...props }: GNBIconProps) {
+  return (
+    <svg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg' {...props}>
+      <path
+        d='M16 28C22.6274 28 28 22.6274 28 16C28 9.37258 22.6274 4 16 4C9.37258 4 4 9.37258 4 16C4 22.6274 9.37258 28 16 28Z'
+        stroke={gnbColorGenerator(isFill)}
+        strokeWidth='1.5'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+      />
+      <path
+        d='M10.668 18.666C10.668 18.666 12.668 21.3327 16.0013 21.3327C19.3346 21.3327 21.3346 18.666 21.3346 18.666'
+        stroke={gnbColorGenerator(isFill)}
+        strokeWidth='1.5'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+      />
     </svg>
   );
 }

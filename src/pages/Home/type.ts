@@ -1,3 +1,5 @@
+import { HomeTabs } from '@@stores/home/type';
+
 export interface RecentSearchCardProps {
   profile: RecentSearchProfile;
 }
@@ -19,4 +21,8 @@ export interface RecommendProfile {
   title: string;
   region: string;
   description: string;
+}
+
+export interface HomePanelProps {
+  panelType: HomeTabs;
 }

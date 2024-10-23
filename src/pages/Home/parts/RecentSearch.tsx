@@ -2,7 +2,9 @@ import styled from 'styled-components';
 
 import Slider from '@@components/Slider';
 import { Typography } from '@@components/Typography';
+import { HomePanelProps } from '@@pages/Home/type';
 import { useAppState } from '@@store/hooks';
+import { KEYWORD_BY_HOME_TABS } from '@@stores/home/constants';
 
 import RecentSearchCard from './cards/RecentSearchCard';
 
@@ -12,12 +14,12 @@ const StyledRecentSearch = styled.div`
   gap: 16px;
 `;
 
-function RecentSearch() {
+function RecentSearch({ panelType }: HomePanelProps) {
   const workerList = useAppState((state) => state.home.workerList);
 
   return (
     <StyledRecentSearch>
-      <Typography.LargeSubTitle>최근 검색한 워커</Typography.LargeSubTitle>
+      <Typography.LargeSubTitle>최근 검색한 {KEYWORD_BY_HOME_TABS[panelType]}</Typography.LargeSubTitle>
       <Slider
         size={216}
         gap={8}

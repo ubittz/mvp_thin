@@ -1,13 +1,13 @@
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
-import Header from '@@components/Header';
+import GlobalNavigationBar from '@@components/GNB';
+import Tab from '@@components/Tab';
 import { COLORS } from '@@constants/colors';
 import { LogoIcon } from '@@constants/images';
-import Banner from '@@pages/Home/parts/Banner';
-import CopyRight from '@@pages/Home/parts/CopyRight';
-import RecentSearch from '@@pages/Home/parts/RecentSearch';
-import Recommend from '@@pages/Home/parts/Recommend';
-import SearchBar from '@@pages/Home/parts/SearchBar';
+import HomePanel from '@@pages/Home/parts/HomePanel';
+import { HOME_TABS } from '@@stores/home/constants';
+import { setSelectedTab } from '@@stores/home/reducer';
 
 const StyledHome = styled.div`
   display: flex;
@@ -21,27 +21,49 @@ const StyledHome = styled.div`
     overflow-y: scroll;
     overflow-x: hidden;
     .home__body_contents {
-      padding: 0 16px;
-      padding-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 20px 16px;
     }
   }
 `;
 
+const TAB_ITEMS = [
+  {
+    type: HOME_TABS.FIND_WORKER,
+    title: '워커 찾기',
+    content: <HomePanel panelType={HOME_TABS.FIND_WORKER} />,
+  },
+  {
+    type: HOME_TABS.FIND_COMPANY,
+    title: '기업 찾기',
+    content: <HomePanel panelType={HOME_TABS.FIND_COMPANY} />,
+  },
+];
+
+const StyledHomeHeader = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 56px;
+  background: ${COLORS.GRAY_SCALE_000};
+`;
+
 function Home() {
+  const dispatch = useDispatch();
+
+  const handleSelect = (index: number) => {
+    dispatch(setSelectedTab(TAB_ITEMS[index].type));
+  };
+
   return (
     <StyledHome>
-      <Header hiddenBack={true}>
+      <StyledHomeHeader>
         <LogoIcon />
-      </Header>
-      <div className='home__body'>
-        <div className='home__body_contents'>
-          <SearchBar />
-          <Banner />
-          <RecentSearch />
-          <Recommend />
-        </div>
-        <CopyRight />
-      </div>
+      </StyledHomeHeader>
+      <Tab items={TAB_ITEMS} onSelect={handleSelect} />
+      <GlobalNavigationBar />
     </StyledHome>
   );
 }
