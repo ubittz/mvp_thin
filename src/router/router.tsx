@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 
+import DetailProfile from '@@pages/DetailProfile';
 import Home from '@@pages/Home';
 import Login from '@@pages/Login';
 import Register from '@@pages/Register';
@@ -12,6 +13,7 @@ function Router() {
       <Route path='/register' element={<Register />} />
       <Route path='/register/verify' element={<Verify />} />
       <Route path='/home' element={<Home />} />
+      <Route path='/detail/:type/:id' element={<DetailProfile />} />
     </Routes>
   );
 }

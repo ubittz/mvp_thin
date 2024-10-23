@@ -12,6 +12,11 @@ export const KEYWORD_BY_HOME_TABS = {
   [HOME_TABS.FIND_COMPANY]: '기업',
 } as const;
 
+export const USER_TYPE = {
+  WORKER: 'worker',
+  COMPANY: 'company',
+} as const;
+
 export const WORKER_DATA: Worker[] = [
   {
     id: 1,
