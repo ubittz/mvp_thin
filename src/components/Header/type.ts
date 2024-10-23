@@ -1,4 +1,5 @@
-export interface HeaderProps {
-  title: string;
+import { PropsWithChildren } from 'react';
+
+export type HeaderProps = PropsWithChildren<{
   onBack: () => void;
-}
+}>;

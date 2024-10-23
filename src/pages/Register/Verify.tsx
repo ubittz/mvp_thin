@@ -46,7 +46,9 @@ function Verify() {
 
   return (
     <StyledVerify>
-      <Header title='회원가입' onBack={() => navigate('/register')} />
+      <Header onBack={() => navigate('/register')}>
+        <Typography.MediumSubTitle>회원가입</Typography.MediumSubTitle>
+      </Header>
       <div className='verify_body'>
         <div className='register_body__description'>
           <Typography.LargeTitle>휴대전화 인증</Typography.LargeTitle>

@@ -45,7 +45,13 @@ function Register() {
 
   return (
     <StyledRegister>
-      <Header title='회원가입' onBack={() => {}} />
+      <Header
+        onBack={() => {
+          navigate('/');
+        }}
+      >
+        <Typography.MediumSubTitle>회원가입</Typography.MediumSubTitle>
+      </Header>
       <div className='register_body'>
         <div className='register_body__description'>
           <Typography.LargeTitle>기본 정보 입력</Typography.LargeTitle>

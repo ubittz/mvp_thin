@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 import { HeaderProps } from '@@components/Header/type';
-import { Typography } from '@@components/Typography';
 import { COLORS } from '@@constants/colors';
 import { LeftArrowIcon } from '@@constants/images';
 
@@ -20,11 +19,11 @@ const StyledHeader = styled.div`
   }
 `;
 
-function Header({ title, onBack }: HeaderProps) {
+function Header({ children, onBack }: HeaderProps) {
   return (
     <StyledHeader>
       <LeftArrowIcon onClick={onBack} />
-      <Typography.MediumSubTitle>{title}</Typography.MediumSubTitle>
+      {children}
       <div className='black_space' />
     </StyledHeader>
   );

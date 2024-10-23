@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import InputFormGroup from '@@components/InputFormGroup';
@@ -73,6 +74,8 @@ const StyledLoginButton = styled.button`
 `;
 
 function Login() {
+  const navigate = useNavigate();
+
   const [id, setId] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
@@ -101,7 +104,9 @@ function Login() {
           </Typography.MediumButton>
         </StyledLoginButton>
         <div className='login__form_additional_button_wrap'>
-          <button className='additional_button'>회원가입</button>
+          <button className='additional_button' onClick={() => navigate('/register')}>
+            회원가입
+          </button>
           <div className='divider' />
           <button className='additional_button'>아이디 찾기</button>
           <div className='divider' />
