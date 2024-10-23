@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Header from '@@components/Header';
@@ -40,6 +41,8 @@ const StyledRegisterButton = styled.button`
 `;
 
 function Register() {
+  const navigate = useNavigate();
+
   return (
     <StyledRegister>
       <Header title='회원가입' onBack={() => {}} />
@@ -64,7 +67,9 @@ function Register() {
         <InputFormGroup label='이메일' placeholder='이메일을 입력해 주세요.' />
       </div>
       <StyledRegisterButton>
-        <Typography.SmallButton color={COLORS.GRAY_SCALE_000}>다음</Typography.SmallButton>
+        <Typography.SmallButton color={COLORS.GRAY_SCALE_000} onClick={() => navigate('/register/verify')}>
+          다음
+        </Typography.SmallButton>
       </StyledRegisterButton>
     </StyledRegister>
   );
