@@ -1,11 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
-import { HomeState } from "@@stores/home/type";
+import { HomeState } from '@@stores/home/type';
 
 const initialState: HomeState = {};
 
 const homeSlice = createSlice({
-  name: "home",
+  name: 'home',
   initialState,
   reducers: {},
 });

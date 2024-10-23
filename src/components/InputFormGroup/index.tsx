@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { InputFormGroupProps } from "@@components/InputFormGroup/type";
-import { Typography } from "@@components/Typography";
-import { COLORS } from "@@constants/colors";
+import { InputFormGroupProps } from '@@components/InputFormGroup/type';
+import { Typography } from '@@components/Typography';
+import { COLORS } from '@@constants/colors';
 
 const StyledInputFormGroup = styled.div`
   display: flex;
@@ -41,29 +41,19 @@ const StyledButton = styled.button`
   border: none;
 `;
 
-function InputFormGroup({
-  id,
-  label,
-  inputButtonProps,
-  ...props
-}: InputFormGroupProps) {
+function InputFormGroup({ id, label, inputButtonProps, ...props }: InputFormGroupProps) {
   return (
     <StyledInputFormGroup>
       {label && (
         <label htmlFor={id}>
-          <Typography.SmallBody color={COLORS.GRAY_SCALE_600}>
-            {label}
-          </Typography.SmallBody>
+          <Typography.SmallBody color={COLORS.GRAY_SCALE_600}>{label}</Typography.SmallBody>
         </label>
       )}
-      <div className="input_wrap">
+      <div className='input_wrap'>
         <StyledInput id={id} {...props} />
         {inputButtonProps && (
           <StyledButton>
-            <Typography.MediumButton
-              color={COLORS.MAIN_700}
-              onClick={inputButtonProps.onClick}
-            >
+            <Typography.MediumButton color={COLORS.MAIN_700} onClick={inputButtonProps.onClick}>
               {inputButtonProps.title}
             </Typography.MediumButton>
           </StyledButton>

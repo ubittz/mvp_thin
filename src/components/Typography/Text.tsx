@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { AdditionalTypographyProps } from "@@components/Typography/type";
-import { COLORS } from "@@constants/colors";
+import { AdditionalTypographyProps } from '@@components/Typography/type';
+import { COLORS } from '@@constants/colors';
 
 const Text = styled.p<AdditionalTypographyProps>`
   letter-spacing: -0.04em;

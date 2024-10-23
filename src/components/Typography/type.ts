@@ -1,6 +1,6 @@
-import { HTMLAttributes } from "react";
+import { HTMLAttributes } from 'react';
 
-import { SupportedHTMLElements } from "styled-components";
+import { SupportedHTMLElements } from 'styled-components';
 
 export interface TypographyProps extends HTMLAttributes<HTMLParagraphElement> {
   as?: SupportedHTMLElements;

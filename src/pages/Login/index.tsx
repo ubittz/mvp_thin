@@ -1,16 +1,11 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import InputFormGroup from "@@components/InputFormGroup";
-import { Typography } from "@@components/Typography";
-import { COLORS } from "@@constants/colors";
-import {
-  AppleIcon,
-  GoogleIcon,
-  KakaotalkIcon,
-  NaverIcon,
-} from "@@constants/images";
+import InputFormGroup from '@@components/InputFormGroup';
+import { Typography } from '@@components/Typography';
+import { COLORS } from '@@constants/colors';
+import { AppleIcon, GoogleIcon, KakaotalkIcon, NaverIcon } from '@@constants/images';
 
 const StyledLogin = styled.div`
   display: flex;
@@ -78,8 +73,8 @@ const StyledLoginButton = styled.button`
 `;
 
 function Login() {
-  const [id, setId] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const [id, setId] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
 
   return (
     <StyledLogin>
@@ -90,44 +85,36 @@ function Login() {
         <br />
         쓰인 입니다 :&#41;
       </Typography.LargeTitle>
-      <div className="login__form">
+      <div className='login__form'>
+        <InputFormGroup label='아이디' id='id' placeholder='아이디를 입력해주세요' value={id} onChange={(e) => setId(e.target.value)} />
         <InputFormGroup
-          label="아이디"
-          id="id"
-          placeholder="아이디를 입력해주세요"
-          value={id}
-          onChange={(e) => setId(e.target.value)}
-        />
-        <InputFormGroup
-          label="비밀번호"
-          id="password"
-          type="password"
-          placeholder="비밀번호를 입력해 주세요."
+          label='비밀번호'
+          id='password'
+          type='password'
+          placeholder='비밀번호를 입력해 주세요.'
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <StyledLoginButton>
-          <Typography.MediumButton as="span" color={COLORS.GRAY_SCALE_000}>
+          <Typography.MediumButton as='span' color={COLORS.GRAY_SCALE_000}>
             로그인
           </Typography.MediumButton>
         </StyledLoginButton>
-        <div className="login__form_additional_button_wrap">
-          <button className="additional_button">회원가입</button>
-          <div className="divider" />
-          <button className="additional_button">아이디 찾기</button>
-          <div className="divider" />
-          <button className="additional_button">비밀번호 재설정</button>
+        <div className='login__form_additional_button_wrap'>
+          <button className='additional_button'>회원가입</button>
+          <div className='divider' />
+          <button className='additional_button'>아이디 찾기</button>
+          <div className='divider' />
+          <button className='additional_button'>비밀번호 재설정</button>
         </div>
       </div>
-      <div className="login__sns_wrap">
-        <div className="sns_login__label">
-          <div className="divider" />
-          <Typography.Caption color={COLORS.GRAY_SCALE_600}>
-            SNS로 로그인
-          </Typography.Caption>
-          <div className="divider" />
+      <div className='login__sns_wrap'>
+        <div className='sns_login__label'>
+          <div className='divider' />
+          <Typography.Caption color={COLORS.GRAY_SCALE_600}>SNS로 로그인</Typography.Caption>
+          <div className='divider' />
         </div>
-        <div className="sns_login__icon_wrap">
+        <div className='sns_login__icon_wrap'>
           <KakaotalkIcon />
           <NaverIcon />
           <GoogleIcon />

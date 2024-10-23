@@ -1,9 +1,9 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { HeaderProps } from "@@components/Header/type";
-import { Typography } from "@@components/Typography";
-import { COLORS } from "@@constants/colors";
-import { LeftArrowIcon } from "@@constants/images";
+import { HeaderProps } from '@@components/Header/type';
+import { Typography } from '@@components/Typography';
+import { COLORS } from '@@constants/colors';
+import { LeftArrowIcon } from '@@constants/images';
 
 const StyledHeader = styled.div`
   display: flex;
@@ -25,7 +25,7 @@ function Header({ title, onBack }: HeaderProps) {
     <StyledHeader>
       <LeftArrowIcon onClick={onBack} />
       <Typography.MediumSubTitle>{title}</Typography.MediumSubTitle>
-      <div className="black_space" />
+      <div className='black_space' />
     </StyledHeader>
   );
 }
