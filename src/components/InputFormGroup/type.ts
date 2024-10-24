@@ -6,4 +6,7 @@ export interface InputFormGroupProps extends InputHTMLAttributes<HTMLInputElemen
     title: string;
     onClick: () => void;
   };
+  inputType?: InputType;
 }
+
+export type InputType = 'outline' | 'fill';

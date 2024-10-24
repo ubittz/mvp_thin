@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { InputFormGroupProps } from '@@components/InputFormGroup/type';
+import { InputFormGroupProps, InputType } from '@@components/InputFormGroup/type';
 import { Typography } from '@@components/Typography';
 import { COLORS } from '@@constants/colors';
 
@@ -14,12 +14,19 @@ const StyledInputFormGroup = styled.div`
   }
 `;
 
-const StyledInput = styled.input`
+const StyledInput = styled.input<{ $inputType: InputType }>`
   width: 100%;
   height: 48px;
   padding: 13px 12px;
   border: none;
-  border-bottom: 1px solid ${COLORS.GRAY_SCALE_050};
+  ${({ $inputType }) => {
+    if ($inputType === 'outline') return `border-bottom: 1px solid ${COLORS.GRAY_SCALE_050};`;
+    else
+      return `
+    background: ${COLORS.GRAY_SCALE_050};
+    border-radius: 8px;
+  `;
+  }}
   font-size: 16px;
   font-weight: 400;
   letter-spacing: 0.04em;
@@ -41,7 +48,7 @@ const StyledButton = styled.button`
   border: none;
 `;
 
-function InputFormGroup({ id, label, inputButtonProps, ...props }: InputFormGroupProps) {
+function InputFormGroup({ id, label, inputButtonProps, inputType = 'outline', ...props }: InputFormGroupProps) {
   return (
     <StyledInputFormGroup>
       {label && (
@@ -50,7 +57,7 @@ function InputFormGroup({ id, label, inputButtonProps, ...props }: InputFormGrou
         </label>
       )}
       <div className='input_wrap'>
-        <StyledInput id={id} {...props} />
+        <StyledInput $inputType={inputType} id={id} {...props} />
         {inputButtonProps && (
           <StyledButton>
             <Typography.MediumButton color={COLORS.MAIN_700} onClick={inputButtonProps.onClick}>
