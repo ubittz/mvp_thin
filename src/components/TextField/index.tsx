@@ -28,6 +28,7 @@ const StyledInput = styled.input`
   font-size: 14px;
   line-height: 20px;
   font-weight: 400;
+  letter-spacing: -0.04em;
 
   &::placeholder {
     color: ${COLORS.GRAY_SCALE_300};

@@ -177,9 +177,9 @@ export function GNBMyPageIcon({ isFill = false, ...props }: GNBIconProps) {
   );
 }
 
-export function UserIcon() {
+export function UserIcon(props: SVGAttributes<SVGSVGElement>) {
   return (
-    <svg width='22' height='25' viewBox='0 0 22 25' fill='none' xmlns='http://www.w3.org/2000/svg'>
+    <svg width='22' height='25' viewBox='0 0 22 25' fill='none' xmlns='http://www.w3.org/2000/svg' {...props}>
       <g clipPath='url(#clip0_42005_3986)'>
         <path
           d='M10.8865 11.8451C13.864 11.8451 16.2778 9.43681 16.2778 6.46601C16.2778 3.49522 13.864 1.08691 10.8865 1.08691C7.9089 1.08691 5.49512 3.49522 5.49512 6.46601C5.49512 9.43681 7.9089 11.8451 10.8865 11.8451Z'

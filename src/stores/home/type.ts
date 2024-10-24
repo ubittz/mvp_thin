@@ -2,7 +2,7 @@ import { HOME_TABS, MATCHING_STATUS, USER_TYPE } from '@@stores/home/constants';
 import { asType } from '@@types/common';
 
 export interface HomeState {
-  me?: Member;
+  me?: Worker;
   workerList: Worker[];
   companyList: Company[];
   selectedTab: HomeTabs;
