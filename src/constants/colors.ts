@@ -1,4 +1,5 @@
 export const COLORS = {
+  MAIN_050: '#FDFBED',
   MAIN_400: '#FBB037',
   MAIN_700: '#965E03',
   GRAY_SCALE_000: '#FFFFFF',

@@ -1,4 +1,4 @@
-import { HOME_TABS, MATCHING_STATUS, USER_TYPE } from '@@stores/home/constants';
+import { HOME_TABS, USER_TYPE } from '@@stores/home/constants';
 import { asType } from '@@types/common';
 
 export interface HomeState {
@@ -11,8 +11,6 @@ export interface HomeState {
 export type HomeTabs = asType<typeof HOME_TABS>;
 
 export type UserType = asType<typeof USER_TYPE>;
-
-export type MatchingStatus = asType<typeof MATCHING_STATUS>;
 
 export interface Member {
   name: string;
