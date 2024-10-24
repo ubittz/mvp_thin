@@ -9,3 +9,5 @@
     export type Colors = asType<typeof COLORS>; -> 'red' | 'blue' 타입이 됨.
 */
 export type asType<T> = T[keyof T];
+
+export type FormType = 'new' | 'edit';

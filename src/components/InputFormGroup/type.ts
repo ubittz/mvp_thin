@@ -9,4 +9,4 @@ export interface InputFormGroupProps extends InputHTMLAttributes<HTMLInputElemen
   inputType?: InputType;
 }
 
-export type InputType = 'outline' | 'fill';
+export type InputType = 'underline' | 'outline' | 'fill';

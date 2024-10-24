@@ -1,5 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 
+import Certificate from '@@pages/Certificate';
+import EidtCertificate from '@@pages/Certificate/Edit';
+import NewCertificate from '@@pages/Certificate/New';
 import DetailProfile from '@@pages/DetailProfile';
 import Home from '@@pages/Home';
 import Login from '@@pages/Login';
@@ -26,6 +29,9 @@ function Router() {
       <Route path='/my/modify' element={<Modify />} />
       <Route path='/my/service' element={<ServiceHistory />} />
       <Route path='/my/service/:id' element={<DetailServiceHistory />} />
+      <Route path='/my/certificate' element={<Certificate />} />
+      <Route path='/my/certificate/new' element={<NewCertificate />} />
+      <Route path='/my/certificate/:id' element={<EidtCertificate />} />
     </Routes>
   );
 }

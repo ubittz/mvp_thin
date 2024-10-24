@@ -20,7 +20,8 @@ const StyledInput = styled.input<{ $inputType: InputType }>`
   padding: 13px 12px;
   border: none;
   ${({ $inputType }) => {
-    if ($inputType === 'outline') return `border-bottom: 1px solid ${COLORS.GRAY_SCALE_050};`;
+    if ($inputType === 'underline') return `border-bottom: 1px solid ${COLORS.GRAY_SCALE_050};`;
+    else if ($inputType === 'outline') return `border: 1px solid ${COLORS.GRAY_SCALE_050};`;
     else
       return `
     background: ${COLORS.GRAY_SCALE_050};
@@ -48,7 +49,7 @@ const StyledButton = styled.button`
   border: none;
 `;
 
-function InputFormGroup({ id, label, inputButtonProps, inputType = 'outline', ...props }: InputFormGroupProps) {
+function InputFormGroup({ id, label, inputButtonProps, inputType = 'underline', ...props }: InputFormGroupProps) {
   return (
     <StyledInputFormGroup>
       {label && (

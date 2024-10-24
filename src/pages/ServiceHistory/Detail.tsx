@@ -87,6 +87,7 @@ const StyledButton = styled.button<{ $background: string }>`
   height: 48px;
   background: ${({ $background }) => $background};
 `;
+
 function DetailServiceHistory() {
   const status = SERVICE_STATUS.MATCHED;
   const user = useAppState((state) => state.home.workerList[0]);
