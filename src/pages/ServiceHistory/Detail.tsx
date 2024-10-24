@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Header from '@@components/Header';
@@ -89,6 +90,8 @@ const StyledButton = styled.button<{ $background: string }>`
 `;
 
 function DetailServiceHistory() {
+  const navigate = useNavigate();
+
   const status = SERVICE_STATUS.MATCHED;
   const user = useAppState((state) => state.home.workerList[0]);
 
@@ -99,7 +102,7 @@ function DetailServiceHistory() {
       <div className='service_detail__dial'>
         <MessageIcon />
       </div>
-      <Header>
+      <Header onBack={() => navigate(-1)}>
         <Typography.MediumSubTitle>서비스 내역 상세</Typography.MediumSubTitle>
       </Header>
       <div className='service_detail__body'>

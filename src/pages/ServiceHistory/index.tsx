@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Header from '@@components/Header';
@@ -46,6 +47,8 @@ const FILTER_STATUSES = [
 ];
 
 function ServiceHistory() {
+  const navigate = useNavigate();
+
   const [selectedStatus, setSelectedStatus] = useState<ServiceStatus>();
 
   const handleClick = (status?: ServiceStatus) => {
@@ -54,7 +57,7 @@ function ServiceHistory() {
 
   return (
     <StyledServiceHistory>
-      <Header>
+      <Header onBack={() => navigate(-1)}>
         <Typography.MediumSubTitle>서비스 내역</Typography.MediumSubTitle>
       </Header>
       <div className='service_history__filter'>

@@ -1,5 +1,6 @@
 import { format } from 'date-fns';
 import { Form, useFormikContext } from 'formik';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Header from '@@components/Header';
@@ -43,11 +44,13 @@ const StyledButton = styled.button`
 `;
 
 function FormContent({ type }: { type: FormType }) {
+  const navigate = useNavigate();
+
   const { getFieldProps, handleSubmit } = useFormikContext<CertificateForm>();
 
   return (
     <StyledFormContent onSubmit={handleSubmit}>
-      <Header>증명서 {type === 'edit' ? '수정' : '발행'}</Header>
+      <Header onBack={() => navigate(-1)}>증명서 {type === 'edit' ? '수정' : '발행'}</Header>
       <div className='certificate_form__body'>
         <Typography.LargeTitle>
           {type === 'edit' ? '수정하실' : '발행하실'} 증명서 내용을
