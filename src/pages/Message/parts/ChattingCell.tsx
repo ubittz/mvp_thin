@@ -1,8 +1,10 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { Typography } from '@@components/Typography';
 import { COLORS } from '@@constants/colors';
 import { UserIcon } from '@@constants/images';
+import { useAppState } from '@@store/hooks';
 
 const StyledChattingCell = styled.div`
   display: flex;
@@ -44,20 +46,34 @@ const StyledChattingCell = styled.div`
   }
 `;
 
-function ChattingCell() {
+function ChattingCell({ id }: { id: number }) {
+  const navigate = useNavigate();
+
+  const chatting = useAppState((state) => state.message.chattingList).find((chatting) => chatting.id === +id);
+  const profile = useAppState((state) => state.home.workerList).find((worker) => worker.id === chatting?.userId);
+  const lastMessage = useAppState((state) => state.message.messageList)
+    .filter((message) => message.chattingId === chatting?.id)
+    .reverse()[0];
+
+  if (!chatting || !profile || !lastMessage) return null;
+
+  const handleClick = () => {
+    navigate(`/message/${id}`);
+  };
+
   return (
-    <StyledChattingCell>
+    <StyledChattingCell onClick={handleClick}>
       <div className='chatting_icon'>
         <UserIcon />
       </div>
       <div className='chatting_info'>
         <div className='chatting_info__top'>
-          <Typography.SmallBody>김재현</Typography.SmallBody>
+          <Typography.SmallBody>{profile.name}</Typography.SmallBody>
           <Typography.SmallBody color={COLORS.GRAY_SCALE_400}>매칭중</Typography.SmallBody>
         </div>
         <div className='chatting_info__bottom'>
           <Typography.SmallBody className='chatting_info__last_message' color={COLORS.GRAY_SCALE_600}>
-            김재현 입니다! 올려주신 공고 보고 지원하고 싶었어요. 제가 LA에 있을 때 한국에 대한 그리움,
+            {lastMessage.text}
           </Typography.SmallBody>
         </div>
       </div>

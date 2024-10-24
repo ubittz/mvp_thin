@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import ChattingCell from '@@pages/Message/parts/ChattingCell';
+import { useAppState } from '@@store/hooks';
 
 const StyledChattingList = styled.div`
   display: flex;
@@ -8,10 +9,13 @@ const StyledChattingList = styled.div`
 `;
 
 function ChattingList() {
+  const chattingList = useAppState((state) => state.message.chattingList);
+
   return (
     <StyledChattingList>
-      <ChattingCell />
-      <ChattingCell />
+      {chattingList.map(({ id }) => (
+        <ChattingCell key={id} id={id} />
+      ))}
     </StyledChattingList>
   );
 }

@@ -17,6 +17,13 @@ export const USER_TYPE = {
   COMPANY: 'company',
 } as const;
 
+export const MATCHING_STATUS = {
+  IDLE: 'idle',
+  PENDING: 'pending',
+  MATCH: 'match',
+  REJECT: 'reject',
+} as const;
+
 export const WORKER_DATA: Worker[] = [
   {
     id: 1,
