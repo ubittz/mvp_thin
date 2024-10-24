@@ -9,13 +9,12 @@ const StyledServiceStatusBadge = styled.div<{ $status: ServiceStatus }>`
 
   border-radius: 4px;
   background: ${({ $status }) => SERVICE_STATUS_BACKGROND[$status]};
-  color: ${({ $status }) => SERVICE_STATUS_COLOR[$status]};
 `;
 
 function ServiceStatusBadge({ status }: { status: ServiceStatus }) {
   return (
     <StyledServiceStatusBadge className='service_status__badge' $status={status}>
-      <Typography.Caption>{SERVICE_STATUS_STRINGS[status]}</Typography.Caption>
+      <Typography.Caption color={SERVICE_STATUS_COLOR[status]}>{SERVICE_STATUS_STRINGS[status]}</Typography.Caption>
     </StyledServiceStatusBadge>
   );
 }

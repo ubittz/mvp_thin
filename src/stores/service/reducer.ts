@@ -1,6 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState: ServiceState = {};
+import { ServiceState } from '@@stores/service/type';
+
+const initialState: ServiceState = {
+  serviceHistoryList: [],
+};
 
 const serviceSlice = createSlice({
   name: 'service',

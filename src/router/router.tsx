@@ -10,6 +10,7 @@ import Modify from '@@pages/MyPage/Modify';
 import Register from '@@pages/Register';
 import Verify from '@@pages/Register/Verify';
 import ServiceHistory from '@@pages/ServiceHistory';
+import DetailServiceHistory from '@@pages/ServiceHistory/Detail';
 
 function Router() {
   return (
@@ -24,6 +25,7 @@ function Router() {
       <Route path='/my' element={<MyPage />} />
       <Route path='/my/modify' element={<Modify />} />
       <Route path='/my/service' element={<ServiceHistory />} />
+      <Route path='/my/service/:id' element={<DetailServiceHistory />} />
     </Routes>
   );
 }
