@@ -1,12 +1,12 @@
-import { useState } from 'react';
-
+import { Formik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
-import InputFormGroup from '@@components/InputFormGroup';
 import { Typography } from '@@components/Typography';
 import { COLORS } from '@@constants/colors';
 import { AppleIcon, GoogleIcon, KakaotalkIcon, NaverIcon } from '@@constants/images';
+import LoginForm from '@@pages/Login/parts/LoginForm';
+import { LoginFormType } from '@@pages/Login/type';
 
 const StyledLogin = styled.div`
   display: flex;
@@ -16,13 +16,19 @@ const StyledLogin = styled.div`
   padding-bottom: 50px;
   height: 100vh;
 
-  .login__form {
+  .login__body {
     flex: 1;
-    flex-direction: column;
     display: flex;
+    flex-direction: column;
     gap: 20px;
-    margin-top: 40px;
-    .login__form_additional_button_wrap {
+    .login__form {
+      flex-direction: column;
+      display: flex;
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .login__additional_button_wrap {
       display: flex;
       gap: 8px;
       justify-content: center;
@@ -65,19 +71,23 @@ const StyledLogin = styled.div`
   }
 `;
 
-const StyledLoginButton = styled.button`
-  outline: none;
-  border: none;
-  background: ${COLORS.MAIN_400};
-  height: 48px;
-  border-radius: 8px;
-`;
-
 function Login() {
+  const initialValues: LoginFormType = {
+    id: '',
+    password: '',
+  };
+
   const navigate = useNavigate();
 
-  const [id, setId] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
+  const handleSubmit = (form: LoginFormType) => {
+    if (!form.id.trim()) {
+      return alert('아이디를 입력해주세요');
+    } else if (!form.password.trim()) {
+      return alert('비밀번호를 입력해주세요.');
+    }
+
+    navigate('/home');
+  };
 
   return (
     <StyledLogin>
@@ -88,22 +98,11 @@ function Login() {
         <br />
         쓰인 입니다 :&#41;
       </Typography.LargeTitle>
-      <div className='login__form'>
-        <InputFormGroup label='아이디' id='id' placeholder='아이디를 입력해주세요' value={id} onChange={(e) => setId(e.target.value)} />
-        <InputFormGroup
-          label='비밀번호'
-          id='password'
-          type='password'
-          placeholder='비밀번호를 입력해 주세요.'
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <StyledLoginButton>
-          <Typography.MediumButton as='span' color={COLORS.GRAY_SCALE_000}>
-            로그인
-          </Typography.MediumButton>
-        </StyledLoginButton>
-        <div className='login__form_additional_button_wrap'>
+      <div className='login__body'>
+        <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+          <LoginForm />
+        </Formik>
+        <div className='login__additional_button_wrap'>
           <button className='additional_button' onClick={() => navigate('/register')}>
             회원가입
           </button>
