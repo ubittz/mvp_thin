@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { Typography } from '@@components/Typography';
@@ -39,8 +40,14 @@ const StyledRecommendCard = styled.div`
 `;
 
 function RecommendCard({ profile }: RecommendCardProps) {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/detail/worker/${profile.id}`);
+  };
+
   return (
-    <StyledRecommendCard>
+    <StyledRecommendCard onClick={handleClick}>
       <div className='card__top'>
         <img className='card__image' src={profile.image} alt='profile_image' />
         <div className='card__description'>

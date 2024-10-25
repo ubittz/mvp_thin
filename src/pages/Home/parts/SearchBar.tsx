@@ -1,16 +1,20 @@
-import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 import TextField from '@@components/TextField';
 import { HomePanelProps } from '@@pages/Home/type';
 import { KEYWORD_BY_HOME_TABS } from '@@stores/home/constants';
 
-const StyledSearchBar = styled.div``;
-
 function SearchBar({ panelType }: HomePanelProps) {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/search');
+  };
+
   return (
-    <StyledSearchBar>
+    <div onClick={handleClick}>
       <TextField placeholder={`${KEYWORD_BY_HOME_TABS[panelType]}를 검색해보세요!`} />
-    </StyledSearchBar>
+    </div>
   );
 }
 
