@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -44,6 +46,18 @@ const StyledVerifyButton = styled.button`
 function Verify() {
   const navigate = useNavigate();
 
+  const [phone, setPhone] = useState<string>('');
+  const [isSend, setIsSend] = useState<boolean>(false);
+  const [otp, setOtp] = useState<string>('');
+
+  const handleClickSubmit = () => {
+    if (!otp.trim()) {
+      return alert('인증 번호를 입력해주세요.');
+    }
+
+    navigate('/home');
+  };
+
   return (
     <StyledVerify>
       <Header onBack={() => navigate('/register')}>
@@ -56,18 +70,25 @@ function Verify() {
         </div>
         <div className='register_body__form'>
           <InputFormGroup
+            type='tel'
             label='휴대전화 번호'
             placeholder='휴대전화 번호를 입력해 주세요.'
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
             inputButtonProps={{
-              title: '인증 전송',
-              onClick: () => {},
+              children: '인증 전송',
+              disabled: !phone.trim(),
+              onClick: () => {
+                alert('인증 번호가 전송되었습니다.');
+                setIsSend(true);
+              },
             }}
           />
-          <InputFormGroup placeholder='인증번호를 입력해주세요' />
+          <InputFormGroup placeholder='인증번호를 입력해주세요' readOnly={!isSend} value={otp} onChange={(e) => setOtp(e.target.value)} />
         </div>
       </div>
       <StyledVerifyButton>
-        <Typography.SmallButton color={COLORS.GRAY_SCALE_000} onClick={() => navigate('/home')}>
+        <Typography.SmallButton color={COLORS.GRAY_SCALE_000} onClick={handleClickSubmit}>
           완료
         </Typography.SmallButton>
       </StyledVerifyButton>

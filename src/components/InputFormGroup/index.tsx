@@ -1,3 +1,5 @@
+import { ForwardedRef, forwardRef } from 'react';
+
 import styled from 'styled-components';
 
 import { InputFormGroupProps, InputType } from '@@components/InputFormGroup/type';
@@ -33,6 +35,11 @@ const StyledInput = styled.input<{ $inputType: InputType }>`
   letter-spacing: 0.04em;
   line-height: 22px;
 
+  &:read-only {
+    background: ${COLORS.GRAY_SCALE_050};
+    color: ${COLORS.GRAY_SCALE_300};
+  }
+
   &::placeholder {
     color: ${COLORS.GRAY_SCALE_300};
   }
@@ -49,7 +56,10 @@ const StyledButton = styled.button`
   border: none;
 `;
 
-function InputFormGroup({ id, label, inputButtonProps, inputType = 'underline', ...props }: InputFormGroupProps) {
+function InputFormGroup(
+  { id, label, inputType = 'underline', inputButtonProps, ...props }: InputFormGroupProps,
+  forwardRef: ForwardedRef<HTMLInputElement>
+) {
   return (
     <StyledInputFormGroup>
       {label && (
@@ -58,12 +68,10 @@ function InputFormGroup({ id, label, inputButtonProps, inputType = 'underline', 
         </label>
       )}
       <div className='input_wrap'>
-        <StyledInput $inputType={inputType} id={id} {...props} />
+        <StyledInput ref={forwardRef} $inputType={inputType} id={id} {...props} />
         {inputButtonProps && (
-          <StyledButton>
-            <Typography.MediumButton color={COLORS.MAIN_700} onClick={inputButtonProps.onClick}>
-              {inputButtonProps.title}
-            </Typography.MediumButton>
+          <StyledButton type='button' {...inputButtonProps}>
+            <Typography.MediumButton color={COLORS.MAIN_700}>{inputButtonProps.children}</Typography.MediumButton>
           </StyledButton>
         )}
       </div>
@@ -71,4 +79,4 @@ function InputFormGroup({ id, label, inputButtonProps, inputType = 'underline', 
   );
 }
 
-export default InputFormGroup;
+export default forwardRef(InputFormGroup);
