@@ -1,3 +1,5 @@
 import { InputHTMLAttributes } from 'react';
 
-export interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {}
+export interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
+  background?: string;
+}

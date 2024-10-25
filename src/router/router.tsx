@@ -12,6 +12,8 @@ import MyPage from '@@pages/MyPage';
 import Modify from '@@pages/MyPage/Modify';
 import Register from '@@pages/Register';
 import Verify from '@@pages/Register/Verify';
+import Search from '@@pages/Search';
+import Result from '@@pages/Search/Result';
 import ServiceHistory from '@@pages/ServiceHistory';
 import DetailServiceHistory from '@@pages/ServiceHistory/Detail';
 
@@ -22,6 +24,8 @@ function Router() {
       <Route path='/register' element={<Register />} />
       <Route path='/register/verify' element={<Verify />} />
       <Route path='/home' element={<Home />} />
+      <Route path='/search' element={<Search />} />
+      <Route path='/search/result' element={<Result />} />
       <Route path='/message' element={<Message />} />
       <Route path='/message/:id' element={<MessageDetail />} />
       <Route path='/detail/:type/:id' element={<DetailProfile />} />

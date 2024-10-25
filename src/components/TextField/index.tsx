@@ -16,12 +16,12 @@ const StyledTextField = styled.div`
   }
 `;
 
-const StyledInput = styled.input`
+const StyledInput = styled.input<{ $background: string }>`
   width: 100%;
   height: 100%;
   padding: 0 16px;
 
-  background: ${COLORS.GRAY_SCALE_000};
+  background: ${({ $background }) => $background};
   border-radius: 64px;
   border: 1px solid ${COLORS.GRAY_SCALE_050};
 
@@ -35,10 +35,10 @@ const StyledInput = styled.input`
   }
 `;
 
-function TextField(props: TextFieldProps) {
+function TextField({ background = COLORS.GRAY_SCALE_000, ...props }: TextFieldProps) {
   return (
     <StyledTextField>
-      <StyledInput {...props} />
+      <StyledInput $background={background} {...props} />
       <SearchIcon className='search__icon' />
     </StyledTextField>
   );
