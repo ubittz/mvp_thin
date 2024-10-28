@@ -20,22 +20,22 @@ import DetailServiceHistory from '@@pages/ServiceHistory/Detail';
 function Router() {
   return (
     <Routes>
-      <Route path='/' element={<Login />} />
-      <Route path='/register' element={<Register />} />
-      <Route path='/register/verify' element={<Verify />} />
-      <Route path='/home' element={<Home />} />
-      <Route path='/search' element={<Search />} />
-      <Route path='/search/result' element={<Result />} />
-      <Route path='/message' element={<Message />} />
-      <Route path='/message/:id' element={<MessageDetail />} />
-      <Route path='/detail/:type/:id' element={<DetailProfile />} />
-      <Route path='/my' element={<MyPage />} />
-      <Route path='/my/modify' element={<Modify />} />
-      <Route path='/my/service' element={<ServiceHistory />} />
-      <Route path='/my/service/:id' element={<DetailServiceHistory />} />
-      <Route path='/my/certificate' element={<Certificate />} />
-      <Route path='/my/certificate/new' element={<NewCertificate />} />
-      <Route path='/my/certificate/:id' element={<EidtCertificate />} />
+      <Route path='/my-pwa/' element={<Login />} />
+      <Route path='/my-pwa/register' element={<Register />} />
+      <Route path='/my-pwa/register/verify' element={<Verify />} />
+      <Route path='/my-pwa/home' element={<Home />} />
+      <Route path='/my-pwa/search' element={<Search />} />
+      <Route path='/my-pwa/search/result' element={<Result />} />
+      <Route path='/my-pwa/message' element={<Message />} />
+      <Route path='/my-pwa/message/:id' element={<MessageDetail />} />
+      <Route path='/my-pwa/detail/:type/:id' element={<DetailProfile />} />
+      <Route path='/my-pwa/my' element={<MyPage />} />
+      <Route path='/my-pwa/my/modify' element={<Modify />} />
+      <Route path='/my-pwa/my/service' element={<ServiceHistory />} />
+      <Route path='/my-pwa/my/service/:id' element={<DetailServiceHistory />} />
+      <Route path='/my-pwa/my/certificate' element={<Certificate />} />
+      <Route path='/my-pwa/my/certificate/new' element={<NewCertificate />} />
+      <Route path='/my-pwa/my/certificate/:id' element={<EidtCertificate />} />
     </Routes>
   );
 }

@@ -79,7 +79,7 @@ function Register() {
       emailRef.current?.focus();
       return alert('이메일을 입력해주세요');
     }
-    navigate('/register/verify');
+    navigate('/my-pwa/register/verify');
   };
 
   return (
@@ -88,7 +88,7 @@ function Register() {
         <StyledRegister onSubmit={handleSubmit}>
           <Header
             onBack={() => {
-              navigate('/');
+              navigate('/my-pwa/');
             }}
           >
             <Typography.MediumSubTitle>회원가입</Typography.MediumSubTitle>

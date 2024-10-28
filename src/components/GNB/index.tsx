@@ -37,21 +37,21 @@ function GlobalNavigationBar() {
 
   return (
     <StyledGNB>
-      <div className='gnb__icon_wrap' data-path='/home' onClick={handleClick}>
-        <GNBHomeIcon className='gnb__icon' isFill={pathname === '/home'} />
-        <Typography.Caption color={pathname === '/home' ? COLORS.MAIN_400 : COLORS.GRAY_SCALE_200}>홈</Typography.Caption>
+      <div className='gnb__icon_wrap' data-path='/my-pwa/home' onClick={handleClick}>
+        <GNBHomeIcon className='gnb__icon' isFill={pathname === '/my-pwa/home'} />
+        <Typography.Caption color={pathname === '/my-pwa/home' ? COLORS.MAIN_400 : COLORS.GRAY_SCALE_200}>홈</Typography.Caption>
       </div>
-      <div className='gnb__icon_wrap' data-path='/search' onClick={handleClick}>
-        <GNBSearchIcon className='gnb__icon' isFill={pathname === '/search'} />
-        <Typography.Caption color={pathname === '/search' ? COLORS.MAIN_400 : COLORS.GRAY_SCALE_200}>검색</Typography.Caption>
+      <div className='gnb__icon_wrap' data-path='/my-pwa/search' onClick={handleClick}>
+        <GNBSearchIcon className='gnb__icon' isFill={pathname === '/my-pwa/search'} />
+        <Typography.Caption color={pathname === '/my-pwa/search' ? COLORS.MAIN_400 : COLORS.GRAY_SCALE_200}>검색</Typography.Caption>
       </div>
-      <div className='gnb__icon_wrap' data-path='/message' onClick={handleClick}>
-        <GNBMessageIcon className='gnb__icon' isFill={pathname === '/message'} />
-        <Typography.Caption color={pathname === '/message' ? COLORS.MAIN_400 : COLORS.GRAY_SCALE_200}>채팅</Typography.Caption>
+      <div className='gnb__icon_wrap' data-path='/my-pwa/message' onClick={handleClick}>
+        <GNBMessageIcon className='gnb__icon' isFill={pathname === '/my-pwa/message'} />
+        <Typography.Caption color={pathname === '/my-pwa/message' ? COLORS.MAIN_400 : COLORS.GRAY_SCALE_200}>채팅</Typography.Caption>
       </div>
-      <div className='gnb__icon_wrap' data-path='/my' onClick={handleClick}>
-        <GNBMyPageIcon className='gnb__icon' isFill={pathname === '/my'} />
-        <Typography.Caption color={pathname === '/my' ? COLORS.MAIN_400 : COLORS.GRAY_SCALE_200}>마이페이지</Typography.Caption>
+      <div className='gnb__icon_wrap' data-path='/my-pwa/my' onClick={handleClick}>
+        <GNBMyPageIcon className='/my-pwagnb__icon' isFill={pathname === '/my'} />
+        <Typography.Caption color={pathname === '/my-pwa/my' ? COLORS.MAIN_400 : COLORS.GRAY_SCALE_200}>마이페이지</Typography.Caption>
       </div>
     </StyledGNB>
   );

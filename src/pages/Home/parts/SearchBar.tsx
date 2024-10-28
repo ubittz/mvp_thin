@@ -8,7 +8,7 @@ function SearchBar({ panelType }: HomePanelProps) {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate('/search');
+    navigate('/my-pwa/search');
   };
 
   return (

@@ -55,12 +55,12 @@ function Verify() {
       return alert('인증 번호를 입력해주세요.');
     }
 
-    navigate('/home');
+    navigate('/my-pwa/home');
   };
 
   return (
     <StyledVerify>
-      <Header onBack={() => navigate('/register')}>
+      <Header onBack={() => navigate('/my-pwa/register')}>
         <Typography.MediumSubTitle>회원가입</Typography.MediumSubTitle>
       </Header>
       <div className='verify_body'>
