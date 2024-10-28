@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 import Certificate from '@@pages/Certificate';
 import EidtCertificate from '@@pages/Certificate/Edit';
@@ -20,7 +20,8 @@ import DetailServiceHistory from '@@pages/ServiceHistory/Detail';
 function Router() {
   return (
     <Routes>
-      <Route path='/my-pwa/' element={<Login />} />
+      <Route path='/' element={<Navigate to='/my-pwa' replace />} />
+      <Route path='/my-pwa' element={<Login />} />
       <Route path='/my-pwa/register' element={<Register />} />
       <Route path='/my-pwa/register/verify' element={<Verify />} />
       <Route path='/my-pwa/home' element={<Home />} />
