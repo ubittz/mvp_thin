@@ -11,7 +11,7 @@ const StyledMyPage = styled.div`
   flex: 0 0 auto;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
 
   .my_page__body {
     flex: 1;

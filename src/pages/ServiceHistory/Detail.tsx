@@ -14,7 +14,7 @@ import { ServiceStatus } from '@@stores/service/type';
 const StyledDetailServiceHistory = styled.div<{ $showButtons: boolean }>`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
 
   .service_detail__dial {
     position: fixed;

@@ -13,7 +13,7 @@ import { FormType } from '@@types/common';
 const StyledFormContent = styled(Form)`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
 
   .certificate_form__body {
     flex: 1;

@@ -15,7 +15,7 @@ import ServiceItem from './parts/ServiceItem';
 const StyledServiceHistory = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
 
   .service_history__filter {
     display: flex;

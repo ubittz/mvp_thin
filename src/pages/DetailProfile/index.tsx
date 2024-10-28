@@ -15,7 +15,7 @@ import { Company, UserType, Worker } from '@@stores/home/type';
 const StyledDetailProfile = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
   background: ${COLORS.GRAY_SCALE_050};
 
   .detail_profile__body {

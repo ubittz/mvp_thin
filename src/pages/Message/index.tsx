@@ -8,7 +8,7 @@ import ChattingList from '@@pages/Message/parts/ChattingList';
 const StyledMessage = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
 
   .message__body {
     flex: 1;

@@ -14,7 +14,7 @@ const StyledLogin = styled.div`
   padding: 0 16px;
   padding-top: 96px;
   padding-bottom: 50px;
-  height: 100vh;
+  height: 100%;
 
   .login__body {
     flex: 1;

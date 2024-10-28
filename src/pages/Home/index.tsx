@@ -13,7 +13,7 @@ const StyledHome = styled.div`
   display: flex;
   flex-direction: column;
 
-  height: 100vh;
+  height: 100%;
   background: ${COLORS.GRAY_SCALE_050};
 
   .home__body {

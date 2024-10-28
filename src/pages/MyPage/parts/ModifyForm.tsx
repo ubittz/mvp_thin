@@ -12,7 +12,7 @@ import { ModifyUserForm } from '@@pages/MyPage/type';
 const StyledModifyForm = styled(Form)`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
 
   .modify__body {
     flex: 1;

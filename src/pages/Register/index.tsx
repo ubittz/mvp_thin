@@ -14,7 +14,7 @@ import { RegisterFormType } from './type';
 const StyledRegister = styled(Form)`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
 
   .register_body {
     flex: 1;

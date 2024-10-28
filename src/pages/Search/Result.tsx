@@ -11,7 +11,7 @@ import ResultItem from './parts/ResultItem';
 const StyledResult = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
 
   .search_result__body {
     flex: 1;

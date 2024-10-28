@@ -15,7 +15,7 @@ import { Message } from '@@stores/message/type';
 const StyledMessageDetail = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
 
   .message_detail__body {
     flex: 1;
