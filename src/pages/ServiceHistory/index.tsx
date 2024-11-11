@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import Header from '@@components/Header';
 import { Typography } from '@@components/Typography';
 import { COLORS } from '@@constants/colors';
+import { useAppState } from '@@store/hooks';
 import { SERVICE_STATUS } from '@@stores/service/constants';
 import { ServiceStatus } from '@@stores/service/type';
 
@@ -25,6 +26,10 @@ const StyledServiceHistory = styled.div`
     padding: 0 16px;
     overflow-x: scroll;
     white-space: nowrap;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   .service_history__body {
@@ -49,6 +54,8 @@ const FILTER_STATUSES = [
 function ServiceHistory() {
   const navigate = useNavigate();
 
+  const serviceHistoryList = useAppState((state) => state.service.serviceHistoryList);
+
   const [selectedStatus, setSelectedStatus] = useState<ServiceStatus>();
 
   const handleClick = (status?: ServiceStatus) => {
@@ -67,11 +74,9 @@ function ServiceHistory() {
         ))}
       </div>
       <div className='service_history__body'>
-        <ServiceItem />
-        <ServiceItem />
-        <ServiceItem />
-        <ServiceItem />
-        <ServiceItem />
+        {serviceHistoryList.map((service) => (
+          <ServiceItem key={service.id} service={service} />
+        ))}
       </div>
     </StyledServiceHistory>
   );

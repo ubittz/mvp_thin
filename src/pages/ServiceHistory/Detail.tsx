@@ -1,4 +1,5 @@
-import { useNavigate } from 'react-router-dom';
+import { format } from 'date-fns';
+import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Header from '@@components/Header';
@@ -8,8 +9,12 @@ import { COLORS } from '@@constants/colors';
 import { MessageIcon, RightArrowIcon } from '@@constants/images';
 import ServiceStatusBadge from '@@pages/ServiceHistory/parts/ServiceStatusBadge';
 import { useAppState } from '@@store/hooks';
+import { USER_TYPE } from '@@stores/home/constants';
 import { SERVICE_STATUS } from '@@stores/service/constants';
 import { ServiceStatus } from '@@stores/service/type';
+
+import { SERVICE_STATUS_DATE_LABEL } from './constants';
+import { useHandleServiceStatus } from './hooks';
 
 const StyledDetailServiceHistory = styled.div<{ $showButtons: boolean }>`
   display: flex;
@@ -92,10 +97,22 @@ const StyledButton = styled.button<{ $background: string }>`
 function DetailServiceHistory() {
   const navigate = useNavigate();
 
-  const status = SERVICE_STATUS.MATCHED;
-  const user = useAppState((state) => state.home.workerList[0]);
+  const { id } = useParams();
 
-  const showButtons = ([SERVICE_STATUS.REQUESTED_OFFER, SERVICE_STATUS.PENDING] as ServiceStatus[]).includes(status);
+  const service = useAppState((state) => state.service.serviceHistoryList).find((service) => service.id === +(id ?? 0));
+  const user = useAppState((state) => state.home[service?.contractorType === USER_TYPE.WORKER ? 'workerList' : 'companyList']).find(
+    (user) => user.id === service?.contractorId
+  );
+
+  const { handleClickApprove, handleClickReject } = useHandleServiceStatus(service?.id ?? 0, service?.status ?? SERVICE_STATUS.IDLE);
+
+  if (!service || !user) return null;
+
+  const showButtons = ([SERVICE_STATUS.REQUESTED_OFFER, SERVICE_STATUS.PENDING] as ServiceStatus[]).includes(service.status);
+
+  const handleClickProfileDetail = () => {
+    navigate(`/thin/detail/${service.contractorType}/${service.contractorId}`);
+  };
 
   return (
     <StyledDetailServiceHistory $showButtons={showButtons}>
@@ -107,9 +124,9 @@ function DetailServiceHistory() {
       </Header>
       <div className='service_detail__body'>
         <div className='service_detail__status'>
-          <ServiceStatusBadge status={status} />
+          <ServiceStatusBadge status={service.status} />
           <Typography.Caption className='service_detail__status_date' color={COLORS.GRAY_SCALE_600}>
-            제안 요청일 2024.11.11
+            {SERVICE_STATUS_DATE_LABEL[service.status]} {format(service.updatedAt, 'yyyy.MM.dd')}
           </Typography.Caption>
         </div>
         <ProfileInfo
@@ -117,23 +134,30 @@ function DetailServiceHistory() {
             id: user.id,
             image: user.image,
             name: user.name,
-            title: user.category,
+            category: user.category,
             region: user.region,
             description: user.description,
+            salary: user.salary,
+            period: user.period,
+            desiredDay: user.desiredDay,
           }}
         />
         <StyledDetailButton>
-          <Typography.MediumButton>상세 정보 보기</Typography.MediumButton>
+          <Typography.MediumButton onClick={handleClickProfileDetail}>상세 정보 보기</Typography.MediumButton>
           <RightArrowIcon width={20} height={20} />
         </StyledDetailButton>
       </div>
       {showButtons && (
         <div className='service_detail__button_wrap'>
-          <StyledButton $background={COLORS.GRAY_SCALE_100}>
-            <Typography.MediumButton color={COLORS.GRAY_SCALE_600}>거절</Typography.MediumButton>
+          <StyledButton $background={COLORS.GRAY_SCALE_100} onClick={handleClickReject}>
+            <Typography.MediumButton color={COLORS.GRAY_SCALE_600}>
+              {service.status === SERVICE_STATUS.REQUESTED_OFFER ? '거절' : '취소'}
+            </Typography.MediumButton>
           </StyledButton>
-          <StyledButton $background={COLORS.MAIN_400}>
-            <Typography.MediumButton color={COLORS.GRAY_SCALE_000}>수락</Typography.MediumButton>
+          <StyledButton $background={COLORS.MAIN_400} onClick={handleClickApprove}>
+            <Typography.MediumButton color={COLORS.GRAY_SCALE_000}>
+              {service.status === SERVICE_STATUS.REQUESTED_OFFER ? '수락' : '확정'}
+            </Typography.MediumButton>
           </StyledButton>
         </div>
       )}

@@ -24,14 +24,20 @@ function Router() {
       <Route path='/thin' element={<Login />} />
       <Route path='/thin/register' element={<Register />} />
       <Route path='/thin/register/verify' element={<Verify />} />
+
       <Route path='/thin/home' element={<Home />} />
+
       <Route path='/thin/search' element={<Search />} />
       <Route path='/thin/search/result' element={<Result />} />
+
       <Route path='/thin/message' element={<Message />} />
       <Route path='/thin/message/:id' element={<MessageDetail />} />
+
       <Route path='/thin/detail/:type/:id' element={<DetailProfile />} />
+
       <Route path='/thin/my' element={<MyPage />} />
       <Route path='/thin/my/modify' element={<Modify />} />
+
       <Route path='/thin/my/service' element={<ServiceHistory />} />
       <Route path='/thin/my/service/:id' element={<DetailServiceHistory />} />
       <Route path='/thin/my/certificate' element={<Certificate />} />
