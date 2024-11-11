@@ -1,12 +1,14 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Header from '@@components/Header';
 import { Typography } from '@@components/Typography';
 import { COLORS } from '@@constants/colors';
+import ResultItem from '@@pages/Search/parts/ResultItem';
+import { getCategoryList } from '@@pages/Search/utils';
 import { useAppState } from '@@store/hooks';
-
-import ResultItem from './parts/ResultItem';
+import { USER_TYPE } from '@@stores/home/constants';
+import { UserType } from '@@stores/home/type';
 
 const StyledResult = styled.div`
   display: flex;
@@ -33,26 +35,41 @@ const StyledResult = styled.div`
 function Result() {
   const navigate = useNavigate();
 
-  const profileList = useAppState((state) => state.home.workerList).map((worker) => ({
-    id: worker.id,
-    image: worker.image,
-    name: worker.name,
-    title: worker.category,
-    region: worker.region,
-    description: worker.description,
-  }));
+  const [searchParams] = useSearchParams();
+  const userType = searchParams.get('type') as UserType;
+  const categoryId = (searchParams.get('categoryId') ?? undefined) as string | undefined;
+  const keyword = (searchParams.get('keyword') ?? undefined) as string | undefined;
+
+  const { bigCategory, mediumCategory, smallCategory } = getCategoryList(categoryId ?? '');
+
+  const profileList = useAppState((state) => state.home[userType === USER_TYPE.WORKER ? 'workerList' : 'companyList'])
+    .filter((profile) => {
+      return keyword === undefined || JSON.stringify(profile).includes(keyword);
+    })
+    .filter(({ category }) => categoryId === undefined || category === categoryId)
+    .map((profile) => ({
+      id: profile.id,
+      image: profile.image,
+      name: profile.name,
+      category: profile.category,
+      region: profile.region,
+      description: profile.description,
+    }));
 
   return (
     <StyledResult>
       <Header onBack={() => navigate(-1)}>
-        <Typography.MediumSubTitle>검색 결과 &#40;4개&#41;</Typography.MediumSubTitle>
+        <Typography.MediumSubTitle>검색 결과 &#40;{profileList.length}개&#41;</Typography.MediumSubTitle>
       </Header>
       <div className='search_result__body'>
-        <Typography.SmallBody color={COLORS.GRAY_SCALE_400}>대분류명 &#62; 중분류명 &#62; 소분류명</Typography.SmallBody>
+        <Typography.SmallBody color={COLORS.GRAY_SCALE_400}>
+          {keyword ? `검색어: "${keyword}"` : `${bigCategory?.title} &#62; ${mediumCategory?.title} &#62; ${smallCategory?.title}`}
+        </Typography.SmallBody>
         <div className='search_result__list'>
+          {profileList.length === 0 && <Typography.LargeBody>데이터가 존재하지 않습니다.</Typography.LargeBody>}
           {profileList.map((profile) => {
             const handleClick = () => {
-              navigate(`/detail/worker/${profile.id}`);
+              navigate(`/detail/${userType}/${profile.id}`);
             };
 
             return <ResultItem key={profile.id} profile={profile} onClick={handleClick} />;

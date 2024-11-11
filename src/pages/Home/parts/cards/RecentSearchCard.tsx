@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Typography } from '@@components/Typography';
 import { COLORS } from '@@constants/colors';
 import { RecentSearchCardProps } from '@@pages/Home/type';
-import { CATEGORY_ITEMS } from '@@pages/Search/constants';
+import { getCategoryList } from '@@pages/Search/utils';
 
 const StyledRecentSearchCard = styled.div`
   display: flex;
@@ -38,11 +38,7 @@ const StyledRecentSearchCard = styled.div`
 function RecentSearchCard({ profile }: RecentSearchCardProps) {
   const navigate = useNavigate();
 
-  const profileCategory = profile.category.split('-').map((id) => +id);
-
-  const bigCategory = CATEGORY_ITEMS.find((category) => category.id === profileCategory[0]);
-  const mediumsCategory = bigCategory?.children?.find((category) => category.id === profileCategory[1]);
-  const smallCategory = mediumsCategory?.children?.find((category) => category.id === profileCategory[2]);
+  const { smallCategory } = getCategoryList(profile.category);
 
   const handleClick = () => {
     navigate(`/detail/worker/${profile.id}`);

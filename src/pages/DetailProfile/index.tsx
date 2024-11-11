@@ -58,7 +58,7 @@ const StyledButton = styled.button`
 function DetailProfile() {
   const { type, id } = useParams();
 
-  if (!['worker', 'company'].includes(type ?? '') || !id) {
+  if (!Object.values(USER_TYPE).includes(type as UserType) || !id) {
     return '에러 페이지';
   }
 

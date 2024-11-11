@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { MouseEventHandler, useState } from 'react';
 
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { Typography } from '@@components/Typography';
 import { COLORS } from '@@constants/colors';
 import { DownArrowIcon, RightArrowIcon } from '@@constants/images';
+import { UserType } from '@@stores/home/type';
 
 import { CategoryType } from '../type';
 
@@ -40,25 +42,40 @@ const StyledCategoryItem = styled.div<{ $depth: number }>`
   }
 `;
 
-function CategoryItem({ category, depth }: { category: CategoryType; depth: number }) {
+function CategoryItem({ category, depth, categoryId, type }: { category: CategoryType; depth: number; categoryId?: string; type: UserType }) {
+  const navigate = useNavigate();
+
   const TitleComponent = depth === 0 ? Typography.SmallSubTitle : Typography.SmallBody;
 
   const [spread, setSpread] = useState<boolean>(false);
 
-  const handleClick = () => {
-    setSpread(!spread);
+  const handleClick: MouseEventHandler<HTMLDivElement> = (e) => {
+    const { category } = e.currentTarget.dataset;
+    if (category?.split('-').length === 3) {
+      navigate(`/thin/search/result?type=${type}&categoryId=${categoryId}`);
+    } else {
+      setSpread(!spread);
+    }
   };
 
   return (
     <StyledCategoryItem $depth={depth}>
-      <div className='category_item__body' onClick={handleClick}>
+      <div className='category_item__body' onClick={handleClick} data-category={categoryId ?? category.id}>
         <TitleComponent className='category_item__title'>{category.title}</TitleComponent>
         {!!(category.children ?? []).length && (
           <div className='category_item__icon'>{spread ? <DownArrowIcon width={24} height={24} /> : <RightArrowIcon width={24} height={24} />}</div>
         )}
       </div>
       <div className={`category_item__children ${spread && 'category_item__children--spread'}`}>
-        {category.children?.map((category) => <CategoryItem key={category.id} category={category} depth={depth + 1} />)}
+        {category.children?.map((category) => (
+          <CategoryItem
+            key={category.id}
+            category={category}
+            depth={depth + 1}
+            categoryId={`${categoryId ? `${categoryId}-` : ''}${category.id}`}
+            type={type}
+          />
+        ))}
       </div>
     </StyledCategoryItem>
   );

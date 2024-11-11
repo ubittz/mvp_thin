@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 import { Typography } from '@@components/Typography';
 import { COLORS } from '@@constants/colors';
+import { getCategoryList } from '@@pages/Search/utils';
 import { Profile } from '@@stores/home/type';
 
 const StyledResultItem = styled.div`
@@ -34,6 +35,8 @@ const StyledResultItem = styled.div`
 `;
 
 function ResultItem({ profile, onClick }: { profile: Profile; onClick: () => void }) {
+  const { smallCategory } = getCategoryList(profile.category);
+
   return (
     <StyledResultItem onClick={onClick}>
       <div className='search_result__profile'>
@@ -41,7 +44,7 @@ function ResultItem({ profile, onClick }: { profile: Profile; onClick: () => voi
       </div>
       <div className='search_result__info'>
         <Typography.MediumSubTitle>{profile.name}</Typography.MediumSubTitle>
-        <Typography.Caption color={COLORS.GRAY_SCALE_500}>{profile.title}</Typography.Caption>
+        <Typography.Caption color={COLORS.GRAY_SCALE_500}>{smallCategory?.title}</Typography.Caption>
         <Typography.Caption color={COLORS.GRAY_SCALE_500}>{profile.region}</Typography.Caption>
       </div>
     </StyledResultItem>

@@ -328,6 +328,16 @@ export const WORKER_DATA: Worker[] = [
     salary: 330,
     period: '1개월',
   },
+  {
+    id: 31,
+    image: WorkerImage2,
+    name: '이정희',
+    category: '1-1-1',
+    region: '서울시 용산구',
+    description: '창의적인 공간을 디자인하는 이정희입니다.',
+    salary: 330,
+    period: '1개월',
+  },
 ];
 
 export const COMPANY_DATA: Company[] = [
@@ -655,6 +665,17 @@ export const COMPANY_DATA: Company[] = [
     image: CompanyImage5,
     name: '스터디홀릭',
     category: '13-1-2',
+    region: '서울시 강북구',
+    description: '다양한 강의를 제공하며 학습의 즐거움을 전하는 스터디홀릭입니다.',
+    salary: 250,
+    period: '3개월',
+    desiredDay: '12월 10일 이후',
+  },
+  {
+    id: 31,
+    image: CompanyImage5,
+    name: '스터디홀릭',
+    category: '1-1-1',
     region: '서울시 강북구',
     description: '다양한 강의를 제공하며 학습의 즐거움을 전하는 스터디홀릭입니다.',
     salary: 250,
