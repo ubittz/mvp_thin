@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Typography } from '@@components/Typography';
 import { COLORS } from '@@constants/colors';
 import { RecentSearchCardProps } from '@@pages/Home/type';
+import { CATEGORY_ITEMS } from '@@pages/Search/constants';
 
 const StyledRecentSearchCard = styled.div`
   display: flex;
@@ -21,8 +22,10 @@ const StyledRecentSearchCard = styled.div`
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.1);
 
   .card__image {
+    border-radius: 50%;
     width: 60px;
     height: 60px;
+    object-fit: cover;
   }
 
   .card__description {
@@ -35,6 +38,12 @@ const StyledRecentSearchCard = styled.div`
 function RecentSearchCard({ profile }: RecentSearchCardProps) {
   const navigate = useNavigate();
 
+  const profileCategory = profile.category.split('-').map((id) => +id);
+
+  const bigCategory = CATEGORY_ITEMS.find((category) => category.id === profileCategory[0]);
+  const mediumsCategory = bigCategory?.children?.find((category) => category.id === profileCategory[1]);
+  const smallCategory = mediumsCategory?.children?.find((category) => category.id === profileCategory[2]);
+
   const handleClick = () => {
     navigate(`/detail/worker/${profile.id}`);
   };
@@ -44,7 +53,7 @@ function RecentSearchCard({ profile }: RecentSearchCardProps) {
       <img className='card__image' src={profile.image} alt='profile_image' />
       <div className='card__description'>
         <Typography.MediumSubTitle>{profile.name}</Typography.MediumSubTitle>
-        <Typography.Caption color={COLORS.GRAY_SCALE_500}>{profile.title}</Typography.Caption>
+        <Typography.Caption color={COLORS.GRAY_SCALE_500}>{smallCategory?.title}</Typography.Caption>
         <Typography.Caption color={COLORS.GRAY_SCALE_500}>{profile.region}</Typography.Caption>
       </div>
     </StyledRecentSearchCard>

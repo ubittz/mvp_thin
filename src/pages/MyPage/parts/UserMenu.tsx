@@ -24,20 +24,20 @@ function UserMenu() {
     {
       title: '서비스 내역',
       onClick: () => {
-        navigate('/my-pwa/my/service');
+        navigate('/thin/my/service');
       },
     },
     {
       title: '증명서 발행',
       onClick: () => {
-        navigate('/my-pwa/my/certificate');
+        navigate('/thin/my/certificate');
       },
     },
     {
       title: '로그아웃',
       hiddenArrow: true,
       onClick: () => {
-        navigate('/my-pwa/');
+        navigate('/thin/');
       },
     },
   ];

@@ -11,7 +11,7 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
-      scope: '/my-pwa',
+      scope: '/thin',
       manifest: {
         name: 'Thin',
         short_name: 'Thin',

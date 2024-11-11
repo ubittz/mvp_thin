@@ -86,7 +86,7 @@ function Login() {
       return alert('비밀번호를 입력해주세요.');
     }
 
-    navigate('/my-pwa/home');
+    navigate('/thin/home');
   };
 
   return (
@@ -103,7 +103,7 @@ function Login() {
           <LoginForm />
         </Formik>
         <div className='login__additional_button_wrap'>
-          <button className='additional_button' onClick={() => navigate('/my-pwa/register')}>
+          <button className='additional_button' onClick={() => navigate('/thin/register')}>
             회원가입
           </button>
           <div className='divider' />

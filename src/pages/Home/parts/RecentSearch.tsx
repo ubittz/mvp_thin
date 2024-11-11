@@ -2,11 +2,10 @@ import styled from 'styled-components';
 
 import Slider from '@@components/Slider';
 import { Typography } from '@@components/Typography';
+import RecentSearchCard from '@@pages/Home/parts/cards/RecentSearchCard';
 import { HomePanelProps } from '@@pages/Home/type';
 import { useAppState } from '@@store/hooks';
-import { KEYWORD_BY_HOME_TABS } from '@@stores/home/constants';
-
-import RecentSearchCard from './cards/RecentSearchCard';
+import { HOME_TABS, KEYWORD_BY_HOME_TABS } from '@@stores/home/constants';
 
 const StyledRecentSearch = styled.div`
   display: flex;
@@ -15,7 +14,7 @@ const StyledRecentSearch = styled.div`
 `;
 
 function RecentSearch({ panelType }: HomePanelProps) {
-  const workerList = useAppState((state) => state.home.workerList);
+  const profileList = useAppState((state) => state.home[panelType === HOME_TABS.FIND_WORKER ? 'workerList' : 'companyList']);
 
   return (
     <StyledRecentSearch>
@@ -23,16 +22,16 @@ function RecentSearch({ panelType }: HomePanelProps) {
       <Slider
         size={216}
         gap={8}
-        items={workerList.map((worker) => (
+        items={profileList.slice(0, 5).map((profile) => (
           <RecentSearchCard
-            key={worker.name}
+            key={profile.id}
             profile={{
-              id: worker.id,
-              image: worker.image,
-              name: worker.name,
-              title: worker.category,
-              region: worker.region,
-              description: worker.description,
+              id: profile.id,
+              image: profile.image,
+              name: profile.name,
+              category: profile.category,
+              region: profile.region,
+              description: profile.description,
             }}
           />
         ))}

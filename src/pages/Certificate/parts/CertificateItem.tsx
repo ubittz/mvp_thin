@@ -22,7 +22,7 @@ function CertificateItem() {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate('/my-pwa/my/certificate/1');
+    navigate('/thin/my/certificate/1');
   };
   return (
     <StyledCertificateItem onClick={handleClick}>

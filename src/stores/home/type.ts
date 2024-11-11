@@ -26,6 +26,8 @@ export interface Worker {
   category: string;
   region: string;
   description: string;
+  salary: number; // 만원 단위
+  period: string;
 }
 
 export interface Company {
@@ -35,13 +37,16 @@ export interface Company {
   category: string;
   region: string;
   description: string;
+  salary: number; // 만원 단위
+  period: string;
+  desiredDay: string;
 }
 
 export interface Profile {
   id: number;
   image: string;
   name: string;
-  title: string;
+  category: string;
   region: string;
   description: string;
 }

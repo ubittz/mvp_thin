@@ -20,23 +20,23 @@ import DetailServiceHistory from '@@pages/ServiceHistory/Detail';
 function Router() {
   return (
     <Routes>
-      <Route path='/' element={<Navigate to='/my-pwa' replace />} />
-      <Route path='/my-pwa' element={<Login />} />
-      <Route path='/my-pwa/register' element={<Register />} />
-      <Route path='/my-pwa/register/verify' element={<Verify />} />
-      <Route path='/my-pwa/home' element={<Home />} />
-      <Route path='/my-pwa/search' element={<Search />} />
-      <Route path='/my-pwa/search/result' element={<Result />} />
-      <Route path='/my-pwa/message' element={<Message />} />
-      <Route path='/my-pwa/message/:id' element={<MessageDetail />} />
-      <Route path='/my-pwa/detail/:type/:id' element={<DetailProfile />} />
-      <Route path='/my-pwa/my' element={<MyPage />} />
-      <Route path='/my-pwa/my/modify' element={<Modify />} />
-      <Route path='/my-pwa/my/service' element={<ServiceHistory />} />
-      <Route path='/my-pwa/my/service/:id' element={<DetailServiceHistory />} />
-      <Route path='/my-pwa/my/certificate' element={<Certificate />} />
-      <Route path='/my-pwa/my/certificate/new' element={<NewCertificate />} />
-      <Route path='/my-pwa/my/certificate/:id' element={<EidtCertificate />} />
+      <Route path='/' element={<Navigate to='/thin' replace />} />
+      <Route path='/thin' element={<Login />} />
+      <Route path='/thin/register' element={<Register />} />
+      <Route path='/thin/register/verify' element={<Verify />} />
+      <Route path='/thin/home' element={<Home />} />
+      <Route path='/thin/search' element={<Search />} />
+      <Route path='/thin/search/result' element={<Result />} />
+      <Route path='/thin/message' element={<Message />} />
+      <Route path='/thin/message/:id' element={<MessageDetail />} />
+      <Route path='/thin/detail/:type/:id' element={<DetailProfile />} />
+      <Route path='/thin/my' element={<MyPage />} />
+      <Route path='/thin/my/modify' element={<Modify />} />
+      <Route path='/thin/my/service' element={<ServiceHistory />} />
+      <Route path='/thin/my/service/:id' element={<DetailServiceHistory />} />
+      <Route path='/thin/my/certificate' element={<Certificate />} />
+      <Route path='/thin/my/certificate/new' element={<NewCertificate />} />
+      <Route path='/thin/my/certificate/:id' element={<EidtCertificate />} />
     </Routes>
   );
 }
