@@ -37,6 +37,7 @@ export const WORKER_DATA: Worker[] = [
     description: '창의적인 아이디어로 광고 캠페인을 성공시키는 김지현입니다.',
     salary: 250,
     period: '기한없음',
+    desiredDay: '즉시',
   },
   {
     id: 2,
@@ -47,6 +48,7 @@ export const WORKER_DATA: Worker[] = [
     description: '정확한 세무 처리를 자랑하는 박수진입니다.',
     salary: 280,
     period: '1년',
+    desiredDay: '즉시',
   },
   {
     id: 3,
@@ -57,6 +59,7 @@ export const WORKER_DATA: Worker[] = [
     description: '인재 발굴에 열정 가득한 이민호입니다.',
     salary: 250,
     period: '1년',
+    desiredDay: '즉시',
   },
   {
     id: 4,
@@ -67,6 +70,7 @@ export const WORKER_DATA: Worker[] = [
     description: '독창적인 디자인 감각을 가진 최은지입니다.',
     salary: 230,
     period: '3개월',
+    desiredDay: '즉시',
   },
   {
     id: 5,
@@ -77,6 +81,7 @@ export const WORKER_DATA: Worker[] = [
     description: '글로벌 시장에서 활약하는 정우혁입니다.',
     salary: 320,
     period: '기한없음',
+    desiredDay: '즉시',
   },
   {
     id: 6,
@@ -87,6 +92,7 @@ export const WORKER_DATA: Worker[] = [
     description: '친절한 상담으로 고객의 마음을 사로잡는 이서현입니다.',
     salary: 220,
     period: '기한없음',
+    desiredDay: '즉시',
   },
   {
     id: 7,
@@ -97,6 +103,7 @@ export const WORKER_DATA: Worker[] = [
     description: '효율적인 물류 관리를 자랑하는 남태희입니다.',
     salary: 260,
     period: '2개월',
+    desiredDay: '즉시',
   },
   {
     id: 8,
@@ -107,6 +114,7 @@ export const WORKER_DATA: Worker[] = [
     description: '브랜드 가치를 높이는 박하늘입니다.',
     salary: 300,
     period: '1년',
+    desiredDay: '즉시',
   },
   {
     id: 9,
@@ -117,6 +125,7 @@ export const WORKER_DATA: Worker[] = [
     description: '혁신적인 연구를 이끄는 이지은입니다.',
     salary: 300,
     period: '1년',
+    desiredDay: '즉시',
   },
   {
     id: 10,
@@ -127,6 +136,7 @@ export const WORKER_DATA: Worker[] = [
     description: '학생들에게 꿈을 심어주는 김민수입니다.',
     salary: 250,
     period: '2개월',
+    desiredDay: '즉시',
   },
   {
     id: 11,
@@ -137,6 +147,7 @@ export const WORKER_DATA: Worker[] = [
     description: '고객의 안전을 책임지는 정민재입니다.',
     salary: 220,
     period: '기한없음',
+    desiredDay: '즉시',
   },
   {
     id: 12,
@@ -147,6 +158,7 @@ export const WORKER_DATA: Worker[] = [
     description: '데이터로 미래를 예측하는 최원석입니다.',
     salary: 350,
     period: '3개월',
+    desiredDay: '즉시',
   },
   {
     id: 13,
@@ -157,6 +169,7 @@ export const WORKER_DATA: Worker[] = [
     description: '사용자 경험을 최우선으로 하는 김서연입니다.',
     salary: 290,
     period: '기한없음',
+    desiredDay: '즉시',
   },
   {
     id: 14,
@@ -167,6 +180,7 @@ export const WORKER_DATA: Worker[] = [
     description: '고객의 니즈를 정확히 파악하는 이현우입니다.',
     salary: 310,
     period: '기한없음',
+    desiredDay: '즉시',
   },
   {
     id: 15,
@@ -177,6 +191,7 @@ export const WORKER_DATA: Worker[] = [
     description: '고객과의 소통을 즐기는 박소연입니다.',
     salary: 220,
     period: '기한없음',
+    desiredDay: '즉시',
   },
   {
     id: 16,
@@ -187,6 +202,7 @@ export const WORKER_DATA: Worker[] = [
     description: '세심한 경리 업무로 신뢰를 주는 이민재입니다.',
     salary: 230,
     period: '기한없음',
+    desiredDay: '즉시',
   },
   {
     id: 17,
@@ -197,6 +213,7 @@ export const WORKER_DATA: Worker[] = [
     description: '효과적인 디지털 전략으로 브랜드를 성장시키는 정하윤입니다.',
     salary: 250,
     period: '기한없음',
+    desiredDay: '즉시',
   },
   {
     id: 18,
@@ -207,6 +224,7 @@ export const WORKER_DATA: Worker[] = [
     description: '기업과 직원의 가교 역할을 하는 김수영입니다.',
     salary: 300,
     period: '기한없음',
+    desiredDay: '즉시',
   },
   {
     id: 19,
@@ -217,6 +235,7 @@ export const WORKER_DATA: Worker[] = [
     description: '독창적인 로고로 브랜드 아이덴티티를 만드는 박진아입니다.',
     salary: 230,
     period: '기한없음',
+    desiredDay: '즉시',
   },
   {
     id: 20,
@@ -227,6 +246,7 @@ export const WORKER_DATA: Worker[] = [
     description: '사용자 친화적인 웹사이트를 만드는 최영식입니다.',
     salary: 300,
     period: '3개월',
+    desiredDay: '즉시',
   },
   {
     id: 21,
@@ -237,6 +257,7 @@ export const WORKER_DATA: Worker[] = [
     description: '효율적인 자재 관리를 통해 비용을 절감하는 이지훈입니다.',
     salary: 240,
     period: '기한없음',
+    desiredDay: '즉시',
   },
   {
     id: 22,
@@ -247,6 +268,7 @@ export const WORKER_DATA: Worker[] = [
     description: '정확한 데이터 분석으로 연구의 신뢰성을 높이는 김유진입니다.',
     salary: 350,
     period: '3개월',
+    desiredDay: '즉시',
   },
   {
     id: 23,
@@ -257,6 +279,7 @@ export const WORKER_DATA: Worker[] = [
     description: '학생들과 소통하며 학습을 돕는 정하늘입니다.',
     salary: 100,
     period: '기한없음',
+    desiredDay: '즉시',
   },
   {
     id: 24,
@@ -267,6 +290,7 @@ export const WORKER_DATA: Worker[] = [
     description: '고객의 재정적 목표를 함께 이루는 이영호입니다.',
     salary: 320,
     period: '기한없음',
+    desiredDay: '즉시',
   },
   {
     id: 25,
@@ -277,6 +301,7 @@ export const WORKER_DATA: Worker[] = [
     description: '고객의 목소리에 귀 기울이는 박소희입니다.',
     salary: 210,
     period: '기한없음',
+    desiredDay: '즉시',
   },
   {
     id: 26,
@@ -287,6 +312,7 @@ export const WORKER_DATA: Worker[] = [
     description: '웹개발에 대한 전문 지식을 갖춘 김재영입니다.',
     salary: 260,
     period: '3개월',
+    desiredDay: '즉시',
   },
   {
     id: 27,
@@ -297,6 +323,7 @@ export const WORKER_DATA: Worker[] = [
     description: '매력적인 광고 디자인으로 브랜드를 돋보이게 하는 이수민입니다.',
     salary: 290,
     period: '2개월',
+    desiredDay: '즉시',
   },
   {
     id: 28,
@@ -307,6 +334,7 @@ export const WORKER_DATA: Worker[] = [
     description: '소비자 트렌드를 반영한 상품 기획의 정성훈입니다.',
     salary: 310,
     period: '2개월',
+    desiredDay: '즉시',
   },
   {
     id: 29,
@@ -317,6 +345,7 @@ export const WORKER_DATA: Worker[] = [
     description: '데이터로 인사이트를 제공하는 최민혁입니다.',
     salary: 320,
     period: '기한없음',
+    desiredDay: '즉시',
   },
   {
     id: 30,
@@ -327,6 +356,7 @@ export const WORKER_DATA: Worker[] = [
     description: '창의적인 공간을 디자인하는 이정희입니다.',
     salary: 330,
     period: '1개월',
+    desiredDay: '즉시',
   },
   {
     id: 31,
@@ -337,6 +367,7 @@ export const WORKER_DATA: Worker[] = [
     description: '창의적인 공간을 디자인하는 이정희입니다.',
     salary: 330,
     period: '1개월',
+    desiredDay: '즉시',
   },
 ];
 

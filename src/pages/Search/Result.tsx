@@ -69,7 +69,7 @@ function Result() {
           {profileList.length === 0 && <Typography.LargeBody>데이터가 존재하지 않습니다.</Typography.LargeBody>}
           {profileList.map((profile) => {
             const handleClick = () => {
-              navigate(`/detail/${userType}/${profile.id}`);
+              navigate(`/thin/detail/${userType}/${profile.id}`);
             };
 
             return <ResultItem key={profile.id} profile={profile} onClick={handleClick} />;

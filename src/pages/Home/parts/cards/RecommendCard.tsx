@@ -47,7 +47,7 @@ function RecommendCard({ profile }: RecommendCardProps) {
   const { smallCategory } = getCategoryList(profile.category);
 
   const handleClick = () => {
-    navigate(`/detail/worker/${profile.id}`);
+    navigate(`/thin/detail/worker/${profile.id}`);
   };
 
   return (

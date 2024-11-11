@@ -41,7 +41,7 @@ function RecentSearchCard({ profile }: RecentSearchCardProps) {
   const { smallCategory } = getCategoryList(profile.category);
 
   const handleClick = () => {
-    navigate(`/detail/worker/${profile.id}`);
+    navigate(`/thin/detail/worker/${profile.id}`);
   };
 
   return (

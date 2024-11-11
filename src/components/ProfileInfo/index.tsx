@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { ProfileInfoProps } from '@@components/ProfileInfo/type';
 import { Typography } from '@@components/Typography';
 import { COLORS } from '@@constants/colors';
+import { getCategoryList } from '@@pages/Search/utils';
+import { USER_TYPE } from '@@stores/home/constants';
 
 const StyledProfileInfo = styled.div`
   display: flex;
@@ -17,6 +19,8 @@ const StyledProfileInfo = styled.div`
     .profile_info__image {
       width: 100px;
       height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
     }
 
     .profile_info__detail {
@@ -57,29 +61,33 @@ const StyledProfileInfo = styled.div`
   }
 `;
 
-function ProfileInfo({ profile }: ProfileInfoProps) {
+function ProfileInfo({ userType, profile }: ProfileInfoProps) {
+  const { bigCategory, mediumCategory, smallCategory } = getCategoryList(profile.category);
+
   return (
     <StyledProfileInfo className='profile_info'>
       <div className='profile_info__top'>
         <img className='profile_info__image' src={profile.image} alt='Detail Profile Image' />
         <div className='profile_info__detail'>
           <Typography.LargeSubTitle>{profile.name}</Typography.LargeSubTitle>
-          <Typography.SmallBody color={COLORS.GRAY_SCALE_700}>{profile.title}</Typography.SmallBody>
+          <Typography.SmallBody color={COLORS.GRAY_SCALE_700}>
+            {bigCategory?.title} &gt; {mediumCategory?.title} &gt; {smallCategory?.title}
+          </Typography.SmallBody>
           <Typography.SmallBody color={COLORS.GRAY_SCALE_700}>{profile.region}</Typography.SmallBody>
         </div>
       </div>
       <div className='profile_hope'>
         <div className='profile_hope__item'>
-          <Typography.Caption color={COLORS.GRAY_SCALE_600}>희망 급여</Typography.Caption>
-          <Typography.MediumSubTitle color={COLORS.GRAY_SCALE_800}>300만원</Typography.MediumSubTitle>
+          <Typography.Caption color={COLORS.GRAY_SCALE_600}>{userType === USER_TYPE.WORKER ? '희망 급여' : '예상 급여'}</Typography.Caption>
+          <Typography.MediumSubTitle color={COLORS.GRAY_SCALE_800}>{profile.salary}만원</Typography.MediumSubTitle>
         </div>
         <div className='profile_hope__item'>
           <Typography.Caption color={COLORS.GRAY_SCALE_600}>희망 근로 기간</Typography.Caption>
-          <Typography.MediumSubTitle color={COLORS.GRAY_SCALE_800}>1년 이상</Typography.MediumSubTitle>
+          <Typography.MediumSubTitle color={COLORS.GRAY_SCALE_800}>{profile.period}</Typography.MediumSubTitle>
         </div>
         <div className='profile_hope__item'>
-          <Typography.Caption color={COLORS.GRAY_SCALE_600}>근무 가능일</Typography.Caption>
-          <Typography.MediumSubTitle color={COLORS.GRAY_SCALE_800}>즉시</Typography.MediumSubTitle>
+          <Typography.Caption color={COLORS.GRAY_SCALE_600}>{userType === USER_TYPE.WORKER ? '근무 가능일' : '근무 희망일'}</Typography.Caption>
+          <Typography.MediumSubTitle color={COLORS.GRAY_SCALE_800}>{profile.desiredDay}</Typography.MediumSubTitle>
         </div>
       </div>
     </StyledProfileInfo>

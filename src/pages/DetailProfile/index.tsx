@@ -71,8 +71,9 @@ function DetailProfilePage({ userType }: DetailProfileProps) {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const userList = useAppState((state) => state.home[userType === USER_TYPE.COMPANY ? 'companyList' : 'workerList']);
-  const profile: Worker | Company | undefined = userList.find((user) => user.id === +(id ?? -1));
+  const profile = useAppState((state) => state.home[userType === USER_TYPE.COMPANY ? 'companyList' : 'workerList']).find(
+    (user) => user.id === +(id ?? 0)
+  ) as Worker | Company | undefined;
 
   if (!profile) {
     return '에러 페이지';
@@ -83,13 +84,17 @@ function DetailProfilePage({ userType }: DetailProfileProps) {
       <Header onBack={() => navigate(-1)} />
       <div className='detail_profile__body'>
         <ProfileInfo
+          userType={userType}
           profile={{
             id: profile.id,
             image: profile.image,
             name: profile.name,
-            title: profile.category,
+            category: profile.category,
             region: profile.region,
             description: profile.description,
+            salary: profile.salary,
+            period: profile.period,
+            desiredDay: profile.desiredDay,
           }}
         />
         <div className='detail_profile__description'>
