@@ -1,8 +1,10 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { Typography } from '@@components/Typography';
 import { COLORS } from '@@constants/colors';
 import { UserIcon } from '@@constants/images';
+import { useAppState } from '@@store/hooks';
 
 const StyledNameCard = styled.div`
   display: flex;
@@ -33,14 +35,22 @@ const StyledNameCard = styled.div`
 `;
 
 function NameCard() {
+  const navigate = useNavigate();
+
+  const me = useAppState((state) => state.home.me);
+
+  const handleClick = () => {
+    navigate('/thin/my/modify');
+  };
+
   return (
-    <StyledNameCard>
+    <StyledNameCard onClick={handleClick}>
       <div className='name_card__icon'>
         <UserIcon width={29} height={33} />
       </div>
       <div className='name_card__info'>
-        <Typography.SmallTitle>홍길동님</Typography.SmallTitle>
-        <Typography.SmallBody color={COLORS.GRAY_SCALE_500}>@honggildong123</Typography.SmallBody>
+        <Typography.SmallTitle>{me?.name}</Typography.SmallTitle>
+        <Typography.SmallBody color={COLORS.GRAY_SCALE_500}>{me?.email}</Typography.SmallBody>
       </div>
     </StyledNameCard>
   );

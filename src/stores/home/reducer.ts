@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { COMPANY_DATA, HOME_TABS, WORKER_DATA } from '@@stores/home/constants';
+import { COMPANY_DATA, HOME_TABS, MEMBER_DATA, WORKER_DATA } from '@@stores/home/constants';
 import { HomeState, HomeTabs } from '@@stores/home/type';
 
 const initialState: HomeState = {
-  me: WORKER_DATA[3],
+  me: MEMBER_DATA[MEMBER_DATA.length - 1],
   workerList: WORKER_DATA,
   companyList: COMPANY_DATA,
   selectedTab: HOME_TABS.FIND_WORKER,
