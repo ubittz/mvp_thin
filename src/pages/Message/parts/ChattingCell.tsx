@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import { Typography } from '@@components/Typography';
 import { COLORS } from '@@constants/colors';
-import { UserIcon } from '@@constants/images';
 import { useAppState } from '@@store/hooks';
 
 const StyledChattingCell = styled.div`
@@ -15,13 +14,17 @@ const StyledChattingCell = styled.div`
   border-bottom: 1px solid ${COLORS.GRAY_SCALE_050};
 
   .chatting_icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 52px;
     height: 52px;
     border-radius: 50%;
     background: ${COLORS.GRAY_SCALE_050};
+    overflow: hidden;
+
+    & > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 
   .chatting_info {
@@ -58,13 +61,13 @@ function ChattingCell({ id }: { id: number }) {
   if (!chatting || !profile || !lastMessage) return null;
 
   const handleClick = () => {
-    navigate(`/message/${id}`);
+    navigate(`/thin/message/${id}`);
   };
 
   return (
     <StyledChattingCell onClick={handleClick}>
       <div className='chatting_icon'>
-        <UserIcon />
+        <img src={profile.image} />
       </div>
       <div className='chatting_info'>
         <div className='chatting_info__top'>

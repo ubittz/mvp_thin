@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { Typography } from '@@components/Typography';
 import { COLORS } from '@@constants/colors';
 import { useAppState } from '@@store/hooks';
+import { MESSAGE_DUMMY_STRING } from '@@stores/message/constants';
 import { appendMessage } from '@@stores/message/reducer';
 
 const StyledDetailFooter = styled.div`
@@ -47,9 +48,10 @@ const StyledDetailFooter = styled.div`
   }
 `;
 
-function DetailFooter({ id, onSubmit }: { id: number; onSubmit: () => void }) {
+function DetailFooter({ id }: { id: number }) {
   const dispatch = useDispatch();
   const me = useAppState((state) => state.home.me);
+  const userId = useAppState((state) => state.message.chattingList).find((chatting) => chatting.id === id)?.userId ?? 0;
 
   const [text, setText] = useState<string>('');
 
@@ -66,8 +68,20 @@ function DetailFooter({ id, onSubmit }: { id: number; onSubmit: () => void }) {
         createAt: new Date(),
       })
     );
+
+    setTimeout(() => {
+      const text = MESSAGE_DUMMY_STRING[Math.floor(Math.random() * (MESSAGE_DUMMY_STRING.length - 1))];
+
+      dispatch(
+        appendMessage({
+          text,
+          chattingId: id,
+          userId,
+          createAt: new Date(),
+        })
+      );
+    }, 500);
     setText('');
-    onSubmit();
   };
 
   return (

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import { differenceInCalendarDays, differenceInMinutes } from 'date-fns';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -41,14 +41,14 @@ function MessageDetail() {
   const profile = useAppState((state) => state.home.workerList).find((worker) => worker.id === chatting?.userId);
   const messageList = useAppState((state) => state.message.messageList).filter((message) => message.chattingId === chattingId);
 
-  const handleSubmit = () => {
+  useEffect(() => {
     const body = bodyRef.current;
     if (!body) return;
 
     setTimeout(() => {
       body.scrollTop = body.scrollHeight - body.offsetHeight;
     });
-  };
+  }, [messageList]);
 
   if (!chatting || !profile) return null;
 
@@ -72,6 +72,7 @@ function MessageDetail() {
               <MessageCell
                 key={message.id}
                 message={message}
+                image={profile.image}
                 isRecept={isRecept}
                 showTime={isShowTime}
                 showIcon={isRecept && prevMessage?.userId !== message.userId}
@@ -80,7 +81,7 @@ function MessageDetail() {
           );
         })}
       </div>
-      <DetailFooter id={chattingId} onSubmit={handleSubmit} />
+      <DetailFooter id={chattingId} />
     </StyledMessageDetail>
   );
 }

@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 import { Typography } from '@@components/Typography';
 import { COLORS } from '@@constants/colors';
-import { UserIcon } from '@@constants/images';
 import { MessageCellProps } from '@@pages/Message/type';
 
 const StyledMessageCell = styled.div<{ $isRecept: boolean; $showIcon: boolean }>`
@@ -23,14 +22,19 @@ const StyledMessageCell = styled.div<{ $isRecept: boolean; $showIcon: boolean }>
 
       display: ${({ $isRecept }) => ($isRecept ? 'flex' : 'none')};
       visibility: ${({ $showIcon }) => ($showIcon ? 'visible' : 'hidden')};
-      justify-content: center;
-      align-items: center;
 
       width: 40px;
       height: 40px;
 
       border-radius: 50%;
       background: ${COLORS.GRAY_SCALE_050};
+      overflow: hidden;
+
+      & > img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
 
     .message_cell__text_wrap {
@@ -49,12 +53,12 @@ const StyledMessageCell = styled.div<{ $isRecept: boolean; $showIcon: boolean }>
   }
 `;
 
-function MessageCell({ message, isRecept = false, showIcon = false, showTime = false }: MessageCellProps) {
+function MessageCell({ message, image, isRecept = false, showIcon = false, showTime = false }: MessageCellProps) {
   return (
     <StyledMessageCell $isRecept={isRecept} $showIcon={showIcon}>
       <div className='message_cell__wrap'>
         <div className='message_cell__icon'>
-          <UserIcon width={16} height={19} />
+          <img src={image} />
         </div>
         <div className='message_cell__text_wrap'>
           <div className='message_cell__text'>
