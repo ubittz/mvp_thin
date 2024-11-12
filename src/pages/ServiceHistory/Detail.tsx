@@ -8,18 +8,16 @@ import ProfileInfo from '@@components/ProfileInfo';
 import { Typography } from '@@components/Typography';
 import { COLORS } from '@@constants/colors';
 import { MessageIcon, RightArrowIcon } from '@@constants/images';
+import { SERVICE_STATUS_DATE_LABEL } from '@@pages/ServiceHistory/constants';
+import { useHandleServiceStatus } from '@@pages/ServiceHistory/hooks';
 import ServiceStatusBadge from '@@pages/ServiceHistory/parts/ServiceStatusBadge';
 import { AppDispatch } from '@@store';
 import { useAppState } from '@@store/hooks';
 import { useActionSubscribe } from '@@store/middlewares/actionMiddleware';
 import { USER_TYPE } from '@@stores/home/constants';
-// import { createChattingRequest, createChattingSuccess } from '@@stores/message/reducer';
 import { createChattingRequest, createChattingSuccess } from '@@stores/message/reducer';
 import { SERVICE_STATUS } from '@@stores/service/constants';
 import { ServiceStatus } from '@@stores/service/type';
-
-import { SERVICE_STATUS_DATE_LABEL } from './constants';
-import { useHandleServiceStatus } from './hooks';
 
 const StyledDetailServiceHistory = styled.div<{ $showButtons: boolean }>`
   display: flex;

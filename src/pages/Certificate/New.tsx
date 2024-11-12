@@ -2,9 +2,8 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import Form from '@@pages/Certificate/Form';
+import { CertificateForm } from '@@pages/Certificate/type';
 import { createCertificateRequest } from '@@stores/certificate/reducer';
-
-import { CertificateForm } from './type';
 
 function NewCertificate() {
   const dispatch = useDispatch();

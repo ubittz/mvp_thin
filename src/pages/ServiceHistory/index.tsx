@@ -6,12 +6,11 @@ import styled from 'styled-components';
 import Header from '@@components/Header';
 import { Typography } from '@@components/Typography';
 import { COLORS } from '@@constants/colors';
+import ServiceHistoryFilterButton from '@@pages/ServiceHistory/parts/ServiceHistoryFilterButton';
+import ServiceItem from '@@pages/ServiceHistory/parts/ServiceItem';
 import { useAppState } from '@@store/hooks';
 import { SERVICE_STATUS } from '@@stores/service/constants';
 import { ServiceStatus } from '@@stores/service/type';
-
-import ServiceHistoryFilterButton from './parts/ServiceHistoryFilterButton';
-import ServiceItem from './parts/ServiceItem';
 
 const StyledServiceHistory = styled.div`
   display: flex;

@@ -8,11 +8,10 @@ import Tab from '@@components/Tab';
 import { Typography } from '@@components/Typography';
 import { COLORS } from '@@constants/colors';
 import { SearchIcon } from '@@constants/images';
+import { SEARCH_TABS } from '@@pages/Search/constants';
+import SearchBody from '@@pages/Search/parts/SearchBody';
+import { SearchTabs } from '@@pages/Search/type';
 import { USER_TYPE } from '@@stores/home/constants';
-
-import { SEARCH_TABS } from './constants';
-import SearchBody from './parts/SearchBody';
-import { SearchTabs } from './type';
 
 const StyledSearch = styled.div`
   display: flex;

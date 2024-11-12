@@ -5,14 +5,13 @@ import styled from 'styled-components';
 import { Typography } from '@@components/Typography';
 import { COLORS } from '@@constants/colors';
 import { getCategoryList } from '@@pages/Search/utils';
+import { useHandleServiceStatus } from '@@pages/ServiceHistory/hooks';
 import ServiceStatusBadge from '@@pages/ServiceHistory/parts/ServiceStatusBadge';
 import { useAppState } from '@@store/hooks';
 import { USER_TYPE } from '@@stores/home/constants';
 import { Company, Worker } from '@@stores/home/type';
 import { SERVICE_STATUS } from '@@stores/service/constants';
 import { Service, ServiceStatus } from '@@stores/service/type';
-
-import { useHandleServiceStatus } from '../hooks';
 
 const StyledServiceItem = styled.div`
   display: flex;

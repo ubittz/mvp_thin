@@ -8,8 +8,7 @@ import Header from '@@components/Header';
 import InputFormGroup from '@@components/InputFormGroup';
 import { Typography } from '@@components/Typography';
 import { COLORS } from '@@constants/colors';
-
-import { RegisterFormType } from './type';
+import { RegisterFormType } from '@@pages/Register/type';
 
 const StyledRegister = styled(Form)`
   display: flex;

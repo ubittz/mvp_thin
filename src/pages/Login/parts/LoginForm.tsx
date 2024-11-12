@@ -4,8 +4,7 @@ import styled from 'styled-components';
 import InputFormGroup from '@@components/InputFormGroup';
 import { Typography } from '@@components/Typography';
 import { COLORS } from '@@constants/colors';
-
-import { LoginFormType } from '../type';
+import { LoginFormType } from '@@pages/Login/type';
 
 const StyledLoginButton = styled.button`
   outline: none;

@@ -6,9 +6,8 @@ import styled from 'styled-components';
 import { Typography } from '@@components/Typography';
 import { COLORS } from '@@constants/colors';
 import { DownArrowIcon, RightArrowIcon } from '@@constants/images';
+import { CategoryType } from '@@pages/Search/type';
 import { UserType } from '@@stores/home/type';
-
-import { CategoryType } from '../type';
 
 const StyledCategoryItem = styled.div<{ $depth: number }>`
   display: flex;

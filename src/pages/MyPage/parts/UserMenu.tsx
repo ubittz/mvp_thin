@@ -3,8 +3,7 @@ import styled from 'styled-components';
 
 import { Typography } from '@@components/Typography';
 import { COLORS } from '@@constants/colors';
-
-import UserMenuItem from './UserMenuItem';
+import UserMenuItem from '@@pages/MyPage/parts/UserMenuItem';
 
 const StyledUserMenu = styled.div`
   flex: 1;

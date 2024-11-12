@@ -1,9 +1,8 @@
 import { createAction, createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { AppState } from '@@store/types';
+import { MESSAGE_DATA } from '@@stores/message/constants';
 import { Chatting, Message, MessageState } from '@@stores/message/type';
-
-import { MESSAGE_DATA } from './constants';
 
 const initialState: MessageState = {
   chattingList: [

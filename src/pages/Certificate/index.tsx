@@ -4,9 +4,8 @@ import styled from 'styled-components';
 import Header from '@@components/Header';
 import { Typography } from '@@components/Typography';
 import { COLORS } from '@@constants/colors';
+import CertificateItem from '@@pages/Certificate/parts/CertificateItem';
 import { useAppState } from '@@store/hooks';
-
-import CertificateItem from './parts/CertificateItem';
 
 const StyledCertificate = styled.div`
   display: flex;
