@@ -50,7 +50,7 @@ function GlobalNavigationBar() {
         <Typography.Caption color={pathname === '/thin/message' ? COLORS.MAIN_400 : COLORS.GRAY_SCALE_200}>채팅</Typography.Caption>
       </div>
       <div className='gnb__icon_wrap' data-path='/thin/my' onClick={handleClick}>
-        <GNBMyPageIcon className='/thingnb__icon' isFill={pathname === '/my'} />
+        <GNBMyPageIcon className='/thingnb__icon' isFill={pathname === '/thin/my'} />
         <Typography.Caption color={pathname === '/thin/my' ? COLORS.MAIN_400 : COLORS.GRAY_SCALE_200}>마이페이지</Typography.Caption>
       </div>
     </StyledGNB>
