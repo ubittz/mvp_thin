@@ -1,20 +1,15 @@
 import { Formik } from 'formik';
 
-import { CertificateForm as CertificateFormType } from '@@pages/Certificate/type';
+import FormContent from '@@pages/Certificate/parts/FormContent';
+import { CertificateForm } from '@@pages/Certificate/type';
 import { FormType } from '@@types/common';
 
-import FormContent from './parts/FormContent';
-
-function CertificateForm({ initialValues, type }: { initialValues: CertificateFormType; type: FormType }) {
-  const handleSubmit = (form: CertificateFormType) => {
-    console.log(form);
-  };
-
+function Form({ initialValues, type, onSubmit }: { initialValues: CertificateForm; type: FormType; onSubmit: (form: CertificateForm) => void }) {
   return (
-    <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+    <Formik initialValues={initialValues} onSubmit={onSubmit}>
       <FormContent type={type} />
     </Formik>
   );
 }
 
-export default CertificateForm;
+export default Form;

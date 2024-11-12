@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Header from '@@components/Header';
 import { Typography } from '@@components/Typography';
 import { COLORS } from '@@constants/colors';
+import { useAppState } from '@@store/hooks';
 
 import CertificateItem from './parts/CertificateItem';
 
@@ -37,18 +38,24 @@ const StyledButton = styled.button`
 function Certificate() {
   const navigate = useNavigate();
 
+  const certificateList = useAppState((state) => state.certificate.certificateList);
+
+  const handleClickPublication = () => {
+    navigate('/thin/my/certificate/new');
+  };
+
   return (
     <StyledCertificate>
       <Header onBack={() => navigate(-1)}>
         <Typography.MediumSubTitle>증명서 발행</Typography.MediumSubTitle>
       </Header>
       <div className='certificate__body'>
-        <CertificateItem />
-        <CertificateItem />
-        <CertificateItem />
+        {certificateList.map((certificate) => (
+          <CertificateItem key={certificate.id} certificate={certificate} />
+        ))}
       </div>
       <div className='certificate__footer'>
-        <StyledButton>
+        <StyledButton onClick={handleClickPublication}>
           <Typography.MediumButton color={COLORS.GRAY_SCALE_000}>증명서 발행</Typography.MediumButton>
         </StyledButton>
       </div>

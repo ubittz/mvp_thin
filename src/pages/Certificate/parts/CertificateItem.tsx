@@ -1,8 +1,10 @@
+import { format } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { Typography } from '@@components/Typography';
 import { COLORS } from '@@constants/colors';
+import { Certificate } from '@@stores/certificate/type';
 
 const StyledCertificateItem = styled.div`
   display: flex;
@@ -18,19 +20,19 @@ const StyledCertificateItem = styled.div`
   }
 `;
 
-function CertificateItem() {
+function CertificateItem({ certificate }: { certificate: Certificate }) {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate('/thin/my/certificate/1');
+    navigate(`/thin/my/certificate/${certificate.id}`);
   };
   return (
     <StyledCertificateItem onClick={handleClick}>
       <div className='certificate_item__info'>
-        <Typography.MediumSubTitle>11월 증명서</Typography.MediumSubTitle>
-        <Typography.SmallBody color={COLORS.GRAY_SCALE_600}>2024-11-11</Typography.SmallBody>
+        <Typography.MediumSubTitle>{certificate.title}</Typography.MediumSubTitle>
+        <Typography.SmallBody color={COLORS.GRAY_SCALE_600}>{format(certificate.createdAt, 'yyyy-MM-dd')}</Typography.SmallBody>
       </div>
-      <Typography.SmallBody color={COLORS.GRAY_SCALE_600}>asdfasdf@gmail.com</Typography.SmallBody>
+      <Typography.SmallBody color={COLORS.GRAY_SCALE_600}>{certificate.email}</Typography.SmallBody>
     </StyledCertificateItem>
   );
 }
