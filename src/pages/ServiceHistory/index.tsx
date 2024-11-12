@@ -54,7 +54,6 @@ function ServiceHistory() {
   const navigate = useNavigate();
 
   const serviceHistoryList = useAppState((state) => state.service.serviceHistoryList);
-
   const [selectedStatus, setSelectedStatus] = useState<ServiceStatus>();
 
   const handleClick = (status?: ServiceStatus) => {
@@ -73,9 +72,11 @@ function ServiceHistory() {
         ))}
       </div>
       <div className='service_history__body'>
-        {serviceHistoryList.map((service) => (
-          <ServiceItem key={service.id} service={service} />
-        ))}
+        {serviceHistoryList
+          .filter((service) => !selectedStatus || service.status === selectedStatus)
+          .map((service) => (
+            <ServiceItem key={service.id} service={service} />
+          ))}
       </div>
     </StyledServiceHistory>
   );
