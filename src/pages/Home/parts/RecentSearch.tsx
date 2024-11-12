@@ -5,7 +5,7 @@ import { Typography } from '@@components/Typography';
 import RecentSearchCard from '@@pages/Home/parts/cards/RecentSearchCard';
 import { HomePanelProps } from '@@pages/Home/type';
 import { useAppState } from '@@store/hooks';
-import { HOME_TABS, KEYWORD_BY_HOME_TABS } from '@@stores/home/constants';
+import { HOME_TABS, KEYWORD_BY_HOME_TABS, USER_TYPE } from '@@stores/home/constants';
 
 const StyledRecentSearch = styled.div`
   display: flex;
@@ -25,6 +25,7 @@ function RecentSearch({ panelType }: HomePanelProps) {
         items={profileList.slice(0, 5).map((profile) => (
           <RecentSearchCard
             key={profile.id}
+            userType={panelType === HOME_TABS.FIND_WORKER ? USER_TYPE.WORKER : USER_TYPE.COMPANY}
             profile={{
               id: profile.id,
               image: profile.image,

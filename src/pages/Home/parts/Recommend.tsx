@@ -5,7 +5,7 @@ import { Typography } from '@@components/Typography';
 import RecommendCard from '@@pages/Home/parts/cards/RecommendCard';
 import { HomePanelProps } from '@@pages/Home/type';
 import { useAppState } from '@@store/hooks';
-import { HOME_TABS, KEYWORD_BY_HOME_TABS } from '@@stores/home/constants';
+import { HOME_TABS, KEYWORD_BY_HOME_TABS, USER_TYPE } from '@@stores/home/constants';
 
 const StyledRecommend = styled.div`
   display: flex;
@@ -24,6 +24,7 @@ function Recommend({ panelType }: HomePanelProps) {
         items={profileList.slice(5, 11).map((profile) => (
           <RecommendCard
             key={profile.name}
+            userType={panelType === HOME_TABS.FIND_WORKER ? USER_TYPE.WORKER : USER_TYPE.COMPANY}
             profile={{
               id: profile.id,
               image: profile.image,

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Header from '@@components/Header';
@@ -47,8 +47,9 @@ const StyledSearchButton = styled.button`
 
 function Search() {
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const [selectedTab, setSelectedTab] = useState<SearchTabs>(SEARCH_TABS.FIND_WORKER);
+  const [selectedTab, setSelectedTab] = useState<SearchTabs>(location.state.tabIndex === 0 ? SEARCH_TABS.FIND_WORKER : SEARCH_TABS.FIND_COMPANY);
   const [keyword, setKeyword] = useState<string>('');
 
   const TAB_ITEMS = [
@@ -77,7 +78,7 @@ function Search() {
       <Header onBack={() => navigate(-1)}>
         <Typography.MediumSubTitle>검색</Typography.MediumSubTitle>
       </Header>
-      <Tab items={TAB_ITEMS} onSelect={handleSelect} />
+      <Tab items={TAB_ITEMS} selectedIndex={selectedTab === SEARCH_TABS.FIND_WORKER ? 0 : 1} onSelect={handleSelect} />
       <StyledSearchButton>
         <SearchIcon color={COLORS.GRAY_SCALE_000} />
         <Typography.MediumButton as='span' color={COLORS.GRAY_SCALE_000} onClick={handleClickSearch}>

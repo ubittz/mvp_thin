@@ -55,7 +55,7 @@ function Verify() {
       return alert('인증 번호를 입력해주세요.');
     }
 
-    navigate('/thin/home');
+    navigate('/thin');
   };
 
   return (

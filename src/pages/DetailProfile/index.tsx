@@ -1,3 +1,4 @@
+import { useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -11,6 +12,7 @@ import { DetailProfileProps } from '@@pages/DetailProfile/type';
 import { useAppState } from '@@store/hooks';
 import { USER_TYPE } from '@@stores/home/constants';
 import { Company, UserType, Worker } from '@@stores/home/type';
+import { requestOffer } from '@@stores/service/reducer';
 
 const StyledDetailProfile = styled.div`
   display: flex;
@@ -68,12 +70,29 @@ function DetailProfile() {
 }
 
 function DetailProfilePage({ userType }: DetailProfileProps) {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
 
   const profile = useAppState((state) => state.home[userType === USER_TYPE.COMPANY ? 'companyList' : 'workerList']).find(
     (user) => user.id === +(id ?? 0)
   ) as Worker | Company | undefined;
+  const isRequested = !!useAppState((state) => state.service.requestOfferList).find(
+    (offer) => offer.contractorId === profile?.id && offer.contractorType === userType
+  );
+
+  const handleRequestOffer = () => {
+    if (!profile) return;
+
+    dispatch(
+      requestOffer({
+        contractorId: profile?.id,
+        contractorType: userType,
+      })
+    );
+
+    alert(`${userType === USER_TYPE.WORKER ? '워커' : '기업'}에게 제안을 보냈어요!\n요청수락 시 알림이 발송될 예정입니다.`);
+  };
 
   if (!profile) {
     return '에러 페이지';
@@ -101,11 +120,13 @@ function DetailProfilePage({ userType }: DetailProfileProps) {
           <img src={userType === USER_TYPE.COMPANY ? CompanyImage : WorkerImage} alt='Detail Description' />
         </div>
       </div>
-      <div className='detail_profile__button_wrap'>
-        <StyledButton>
-          <Typography.MediumButton color={COLORS.GRAY_SCALE_000}>제안 보내기</Typography.MediumButton>
-        </StyledButton>
-      </div>
+      {!isRequested && (
+        <div className='detail_profile__button_wrap'>
+          <StyledButton onClick={handleRequestOffer}>
+            <Typography.MediumButton color={COLORS.GRAY_SCALE_000}>제안 보내기</Typography.MediumButton>
+          </StyledButton>
+        </div>
+      )}
     </StyledDetailProfile>
   );
 }

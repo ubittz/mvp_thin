@@ -4,6 +4,7 @@ import { asType } from '@@types/common';
 
 export interface ServiceState {
   serviceHistoryList: Service[];
+  requestOfferList: Service[];
 }
 
 export type ServiceStatus = asType<typeof SERVICE_STATUS>;

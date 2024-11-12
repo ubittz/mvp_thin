@@ -2,13 +2,17 @@ import { useNavigate } from 'react-router-dom';
 
 import TextField from '@@components/TextField';
 import { HomePanelProps } from '@@pages/Home/type';
-import { KEYWORD_BY_HOME_TABS } from '@@stores/home/constants';
+import { HOME_TABS, KEYWORD_BY_HOME_TABS } from '@@stores/home/constants';
 
 function SearchBar({ panelType }: HomePanelProps) {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate('/thin/search');
+    navigate('/thin/search', {
+      state: {
+        tabIndex: panelType === HOME_TABS.FIND_WORKER ? 0 : 1,
+      },
+    });
   };
 
   return (

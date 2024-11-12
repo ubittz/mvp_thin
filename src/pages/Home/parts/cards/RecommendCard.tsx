@@ -41,13 +41,13 @@ const StyledRecommendCard = styled.div`
   }
 `;
 
-function RecommendCard({ profile }: RecommendCardProps) {
+function RecommendCard({ profile, userType }: RecommendCardProps) {
   const navigate = useNavigate();
 
   const { smallCategory } = getCategoryList(profile.category);
 
   const handleClick = () => {
-    navigate(`/thin/detail/worker/${profile.id}`);
+    navigate(`/thin/detail/${userType}/${profile.id}`);
   };
 
   return (

@@ -35,13 +35,13 @@ const StyledRecentSearchCard = styled.div`
   }
 `;
 
-function RecentSearchCard({ profile }: RecentSearchCardProps) {
+function RecentSearchCard({ profile, userType }: RecentSearchCardProps) {
   const navigate = useNavigate();
 
   const { smallCategory } = getCategoryList(profile.category);
 
   const handleClick = () => {
-    navigate(`/thin/detail/worker/${profile.id}`);
+    navigate(`/thin/detail/${userType}/${profile.id}`);
   };
 
   return (
