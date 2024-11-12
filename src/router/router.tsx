@@ -10,6 +10,7 @@ import Message from '@@pages/Message';
 import MessageDetail from '@@pages/Message/Detail';
 import MyPage from '@@pages/MyPage';
 import Modify from '@@pages/MyPage/Modify';
+import NotFound from '@@pages/NotFound';
 import Register from '@@pages/Register';
 import Verify from '@@pages/Register/Verify';
 import Search from '@@pages/Search';
@@ -43,6 +44,8 @@ function Router() {
       <Route path='/thin/my/certificate' element={<Certificate />} />
       <Route path='/thin/my/certificate/new' element={<NewCertificate />} />
       <Route path='/thin/my/certificate/:id' element={<EidtCertificate />} />
+
+      <Route path='*' element={<NotFound />} />
     </Routes>
   );
 }

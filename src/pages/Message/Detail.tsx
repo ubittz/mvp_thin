@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 
 import { differenceInCalendarDays, differenceInMinutes } from 'date-fns';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Header from '@@components/Header';
@@ -50,7 +50,7 @@ function MessageDetail() {
     });
   }, [messageList]);
 
-  if (!chatting || !profile) return null;
+  if (!chatting || !profile) return <Navigate to='/not-found' replace />;
 
   return (
     <StyledMessageDetail>

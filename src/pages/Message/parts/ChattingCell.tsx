@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { Typography } from '@@components/Typography';
@@ -58,7 +58,7 @@ function ChattingCell({ id }: { id: number }) {
     .filter((message) => message.chattingId === chatting?.id)
     .reverse()[0];
 
-  if (!chatting || !profile || !lastMessage) return null;
+  if (!chatting || !profile || !lastMessage) return <Navigate to='/not-found' replace />;
 
   const handleClick = () => {
     navigate(`/thin/message/${id}`);
