@@ -63,7 +63,7 @@ function Result() {
       </Header>
       <div className='search_result__body'>
         <Typography.SmallBody color={COLORS.GRAY_SCALE_400}>
-          {keyword ? `검색어: "${keyword}"` : `${bigCategory?.title} &#62; ${mediumCategory?.title} &#62; ${smallCategory?.title}`}
+          {keyword ? `검색어: "${keyword}"` : `${bigCategory?.title} > ${mediumCategory?.title} > ${smallCategory?.title}`}
         </Typography.SmallBody>
         <div className='search_result__list'>
           {profileList.length === 0 && <Typography.LargeBody>데이터가 존재하지 않습니다.</Typography.LargeBody>}
@@ -71,7 +71,6 @@ function Result() {
             const handleClick = () => {
               navigate(`/thin/detail/${userType}/${profile.id}`);
             };
-
             return <ResultItem key={profile.id} profile={profile} onClick={handleClick} />;
           })}
         </div>
