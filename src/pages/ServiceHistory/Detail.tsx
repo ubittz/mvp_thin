@@ -1,4 +1,5 @@
 import { format } from 'date-fns';
+import { useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -8,8 +9,12 @@ import { Typography } from '@@components/Typography';
 import { COLORS } from '@@constants/colors';
 import { MessageIcon, RightArrowIcon } from '@@constants/images';
 import ServiceStatusBadge from '@@pages/ServiceHistory/parts/ServiceStatusBadge';
+import { AppDispatch } from '@@store';
 import { useAppState } from '@@store/hooks';
+import { useActionSubscribe } from '@@store/middlewares/actionMiddleware';
 import { USER_TYPE } from '@@stores/home/constants';
+// import { createChattingRequest, createChattingSuccess } from '@@stores/message/reducer';
+import { createChattingRequest, createChattingSuccess } from '@@stores/message/reducer';
 import { SERVICE_STATUS } from '@@stores/service/constants';
 import { ServiceStatus } from '@@stores/service/type';
 
@@ -96,6 +101,7 @@ const StyledButton = styled.button<{ $background: string }>`
 
 function DetailServiceHistory() {
   const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
 
   const { id } = useParams();
 
@@ -106,17 +112,29 @@ function DetailServiceHistory() {
 
   const { handleClickApprove, handleClickReject } = useHandleServiceStatus(service?.id ?? 0, service?.status ?? SERVICE_STATUS.IDLE);
 
-  if (!service || !user) return null;
-
-  const showButtons = ([SERVICE_STATUS.REQUESTED_OFFER, SERVICE_STATUS.PENDING] as ServiceStatus[]).includes(service.status);
+  const showButtons = !!service && ([SERVICE_STATUS.REQUESTED_OFFER, SERVICE_STATUS.PENDING] as ServiceStatus[]).includes(service.status);
 
   const handleClickProfileDetail = () => {
-    navigate(`/thin/detail/${service.contractorType}/${service.contractorId}`);
+    navigate(`/thin/detail/${service?.contractorType}/${service?.contractorId}`);
   };
+
+  const handleClickChatting = () => {
+    if (!user) return;
+    dispatch(createChattingRequest(user.id));
+  };
+
+  useActionSubscribe({
+    type: createChattingSuccess.type,
+    callback: ({ payload }: ReturnType<typeof createChattingSuccess>) => {
+      navigate(`/thin/message/${payload}`);
+    },
+  });
+
+  if (!service || !user) return null;
 
   return (
     <StyledDetailServiceHistory $showButtons={showButtons}>
-      <div className='service_detail__dial'>
+      <div className='service_detail__dial' onClick={handleClickChatting}>
         <MessageIcon />
       </div>
       <Header onBack={() => navigate(-1)}>

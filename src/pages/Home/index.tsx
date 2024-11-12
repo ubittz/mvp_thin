@@ -1,4 +1,3 @@
-import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
 import GlobalNavigationBar from '@@components/GNB';
@@ -6,6 +5,7 @@ import Tab from '@@components/Tab';
 import { COLORS } from '@@constants/colors';
 import { LogoIcon } from '@@constants/images';
 import HomePanel from '@@pages/Home/parts/HomePanel';
+import { useAppDispatch } from '@@store/hooks';
 import { HOME_TABS } from '@@stores/home/constants';
 import { setSelectedTab } from '@@stores/home/reducer';
 
@@ -51,7 +51,7 @@ const StyledHomeHeader = styled.div`
 `;
 
 function Home() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleSelect = (index: number) => {
     dispatch(setSelectedTab(TAB_ITEMS[index].type));

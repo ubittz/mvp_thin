@@ -1,11 +1,10 @@
 import { FormEventHandler, useState } from 'react';
 
-import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
 import { Typography } from '@@components/Typography';
 import { COLORS } from '@@constants/colors';
-import { useAppState } from '@@store/hooks';
+import { useAppDispatch, useAppState } from '@@store/hooks';
 import { MESSAGE_DUMMY_STRING } from '@@stores/message/constants';
 import { appendMessage } from '@@stores/message/reducer';
 
@@ -49,7 +48,7 @@ const StyledDetailFooter = styled.div`
 `;
 
 function DetailFooter({ id }: { id: number }) {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const me = useAppState((state) => state.home.me);
   const userId = useAppState((state) => state.message.chattingList).find((chatting) => chatting.id === id)?.userId ?? 0;
 

@@ -32,4 +32,11 @@ export const SERVICE_HISTORY_LIST: Service[] = [
     status: SERVICE_STATUS.MATCHED,
     updatedAt: new Date(),
   },
+  {
+    id: 4,
+    contractorId: 6,
+    contractorType: USER_TYPE.WORKER,
+    status: SERVICE_STATUS.PENDING,
+    updatedAt: new Date(),
+  },
 ];
