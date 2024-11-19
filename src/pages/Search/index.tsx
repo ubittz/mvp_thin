@@ -49,7 +49,7 @@ function Search() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const [selectedTab, setSelectedTab] = useState<SearchTabs>(location.state.tabIndex === 0 ? SEARCH_TABS.FIND_WORKER : SEARCH_TABS.FIND_COMPANY);
+  const [selectedTab, setSelectedTab] = useState<SearchTabs>(location.state?.tabIndex === 0 ? SEARCH_TABS.FIND_WORKER : SEARCH_TABS.FIND_COMPANY);
   const [keyword, setKeyword] = useState<string>('');
 
   const TAB_ITEMS = [

@@ -4,9 +4,9 @@ import { TextFieldProps } from '@@components/TextField/type';
 import { COLORS } from '@@constants/colors';
 import { SearchIcon } from '@@constants/images';
 
-const StyledTextField = styled.div`
+const StyledTextField = styled.div<{ $height?: number }>`
   position: relative;
-  height: 44px;
+  height: ${({ $height }) => $height ?? 44}px;
 
   .search__icon {
     position: absolute;
@@ -35,9 +35,9 @@ const StyledInput = styled.input<{ $background: string }>`
   }
 `;
 
-function TextField({ background = COLORS.GRAY_SCALE_000, ...props }: TextFieldProps) {
+function TextField({ background = COLORS.GRAY_SCALE_000, height, ...props }: TextFieldProps) {
   return (
-    <StyledTextField>
+    <StyledTextField $height={height}>
       <StyledInput $background={background} {...props} />
       <SearchIcon className='search__icon' />
     </StyledTextField>

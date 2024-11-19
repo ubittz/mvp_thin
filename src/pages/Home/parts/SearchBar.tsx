@@ -15,11 +15,7 @@ function SearchBar({ panelType }: HomePanelProps) {
     });
   };
 
-  return (
-    <div onClick={handleClick}>
-      <TextField placeholder={`${KEYWORD_BY_HOME_TABS[panelType]}를 검색해보세요!`} />
-    </div>
-  );
+  return <TextField placeholder={`${KEYWORD_BY_HOME_TABS[panelType]}를 검색해보세요!`} onClick={handleClick} />;
 }
 
 export default SearchBar;
