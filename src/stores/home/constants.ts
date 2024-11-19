@@ -22,6 +22,11 @@ export const KEYWORD_BY_HOME_TABS = {
   [HOME_TABS.FIND_COMPANY]: '기업',
 } as const;
 
+export const EX_BY_HOME_TABS = {
+  [HOME_TABS.FIND_WORKER]: '200만원 내에서 한 달 근무 가능한\n개발 인력을 찾아주세요.',
+  [HOME_TABS.FIND_COMPANY]: '200만원 한 달 근무 가능한 개발자 일자리',
+};
+
 export const USER_TYPE = {
   WORKER: 'worker',
   COMPANY: 'company',

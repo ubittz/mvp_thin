@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Header from '@@components/Header';
@@ -10,8 +11,9 @@ import { COLORS } from '@@constants/colors';
 import { SearchIcon } from '@@constants/images';
 import { SEARCH_TABS } from '@@pages/Search/constants';
 import SearchBody from '@@pages/Search/parts/SearchBody';
-import { SearchTabs } from '@@pages/Search/type';
+import { useAppState } from '@@store/hooks';
 import { USER_TYPE } from '@@stores/home/constants';
+import { setSelectedTab } from '@@stores/home/reducer';
 
 const StyledSearch = styled.div`
   display: flex;
@@ -46,10 +48,10 @@ const StyledSearchButton = styled.button`
 `;
 
 function Search() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const location = useLocation();
 
-  const [selectedTab, setSelectedTab] = useState<SearchTabs>(location.state?.tabIndex === 0 ? SEARCH_TABS.FIND_WORKER : SEARCH_TABS.FIND_COMPANY);
+  const selectedTab = useAppState((state) => state.home.selectedTab);
   const [keyword, setKeyword] = useState<string>('');
 
   const TAB_ITEMS = [
@@ -70,7 +72,7 @@ function Search() {
   };
 
   const handleSelect = (index: number) => {
-    setSelectedTab(TAB_ITEMS[index].type);
+    dispatch(setSelectedTab(TAB_ITEMS[index].type));
   };
 
   return (
