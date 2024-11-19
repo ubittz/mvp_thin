@@ -5,7 +5,7 @@ import Tab from '@@components/Tab';
 import { COLORS } from '@@constants/colors';
 import { LogoIcon } from '@@constants/images';
 import HomePanel from '@@pages/Home/parts/HomePanel';
-import { useAppDispatch } from '@@store/hooks';
+import { useAppDispatch, useAppState } from '@@store/hooks';
 import { HOME_TABS } from '@@stores/home/constants';
 import { setSelectedTab } from '@@stores/home/reducer';
 
@@ -53,6 +53,8 @@ const StyledHomeHeader = styled.div`
 function Home() {
   const dispatch = useAppDispatch();
 
+  const selectedTab = useAppState((state) => state.home.selectedTab);
+
   const handleSelect = (index: number) => {
     dispatch(setSelectedTab(TAB_ITEMS[index].type));
   };
@@ -62,7 +64,7 @@ function Home() {
       <StyledHomeHeader>
         <LogoIcon />
       </StyledHomeHeader>
-      <Tab items={TAB_ITEMS} onSelect={handleSelect} />
+      <Tab items={TAB_ITEMS} selectedIndex={selectedTab === HOME_TABS.FIND_WORKER ? 0 : 1} onSelect={handleSelect} />
       <GlobalNavigationBar />
     </StyledHome>
   );

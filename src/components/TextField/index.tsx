@@ -35,11 +35,11 @@ const StyledInput = styled.input<{ $background: string }>`
   }
 `;
 
-function TextField({ background = COLORS.GRAY_SCALE_000, height, ...props }: TextFieldProps) {
+function TextField({ background = COLORS.GRAY_SCALE_000, height, onClickIcon, ...props }: TextFieldProps) {
   return (
     <StyledTextField $height={height}>
       <StyledInput $background={background} {...props} />
-      <SearchIcon className='search__icon' />
+      <SearchIcon className='search__icon' onClick={onClickIcon} />
     </StyledTextField>
   );
 }
