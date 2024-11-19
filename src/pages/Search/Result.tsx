@@ -44,6 +44,9 @@ function Result() {
 
   const profileList = useAppState((state) => state.home[userType === USER_TYPE.WORKER ? 'workerList' : 'companyList'])
     .filter((profile) => {
+      if ((keyword?.length ?? 0) >= 20) {
+        return profile.salary <= 200 && profile.period === '1개월' && profile.category.startsWith('6-');
+      }
       return keyword === undefined || JSON.stringify(profile).includes(keyword);
     })
     .filter(({ category }) => categoryId === undefined || category === categoryId)

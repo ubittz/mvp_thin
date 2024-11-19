@@ -415,8 +415,8 @@ export const WORKER_DATA: Worker[] = [
     category: '6-1-4',
     region: '경기도 수원시',
     description: '데이터로 미래를 예측하는 최원석입니다.',
-    salary: 350,
-    period: '3개월',
+    salary: 190,
+    period: '1개월',
     desiredDay: '즉시',
   },
   {
@@ -503,8 +503,8 @@ export const WORKER_DATA: Worker[] = [
     category: '6-1-11',
     region: '경기도 용인시',
     description: '사용자 친화적인 웹사이트를 만드는 최영식입니다.',
-    salary: 300,
-    period: '3개월',
+    salary: 200,
+    period: '1개월',
     desiredDay: '즉시',
   },
   {
@@ -660,8 +660,8 @@ export const COMPANY_DATA: Company[] = [
     category: '6-1-11',
     region: '서울시 강남구',
     description: '혁신적인 웹 솔루션을 제공하는 넥스트웹입니다.',
-    salary: 280,
-    period: '2개월',
+    salary: 180,
+    period: '1개월',
     desiredDay: '즉시 시작',
   },
   {
@@ -770,8 +770,8 @@ export const COMPANY_DATA: Company[] = [
     category: '6-1-5',
     region: '서울시 송파구',
     description: '데이터 기반의 통찰력을 제공하는 데이터랩입니다.',
-    salary: 310,
-    period: '3개월',
+    salary: 200,
+    period: '1개월',
     desiredDay: '즉시 시작',
   },
   {
