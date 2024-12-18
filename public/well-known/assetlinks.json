@@ -1,0 +1,10 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "app.netlify.mvp_thin.twa",
+      "sha256_cert_fingerprints": ["48:70:58:EE:B0:90:58:C0:C9:11:25:BC:1D:A3:CE:7B:80:C6:4E:FE:1C:E1:3F:06:4C:F7:AB:D1:D5:36:0D:47"]
+    }
+  }
+]
